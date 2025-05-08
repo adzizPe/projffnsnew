@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMUNITAS FREE FIRE DELI SERDANG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+        /* Base Styles */
+        :root {
+            --primary-color: #ff6b08;
+            --secondary-color: #0a1128;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent-color: #ffc30f;
+            --bg-dark: #0f1923;
+            --bg-light: #f1f1f1;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 25, 35, 0.85);
+            z-index: -1;
+        }
+
+        /* Social Media Sidebar */
+        .social-sidebar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .social-sidebar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 5px 0;
+            color: var(--text-light);
+            border-radius: 0 8px 8px 0;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-sidebar a:hover {
+            width: 50px;
+        }
+
+        .social-sidebar .youtube {
+            background-color: #FF0000;
+        }
+
+        .social-sidebar .discord {
+            background-color: #7289DA;
+        }
+
+        .social-sidebar .instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem 7%;
+            background-color: rgba(10, 17, 40, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-logo img {
+            height: 70px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.3rem;
+        }
+
+        .navbar-nav a {
+            color: var(--text-light);
+            margin: 0 1rem;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navbar-nav a.active {
+            color: var(--primary-color);
+        }
+
+        .navbar-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-extra {
+            position: absolute;
+            right: 7%;
+            display: none;
+        }
+
+        .navbar-extra a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding-top: 120px;
+            padding-bottom: 40px;
+        }
+
+        .events-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .events-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .events-title span {
+            color: var(--primary-color);
+        }
+
+        .events-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Event Cards */
+        .event-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 8, 0.2);
+            border: 1px solid rgba(255, 107, 8, 0.2);
+        }
+
+        .event-banner {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .event-description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-icon {
+            margin-right: 10px;
+            font-size: 1rem;
+            color: var(--primary-color);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 107, 8, 0.2);
+            border-radius: 50%;
+        }
+
+        .detail-text {
+            font-size: 0.8rem;
+        }
+
+        .detail-text h4 {
+            color: var(--accent-color);
+            margin-bottom: 2px;
+            font-size: 0.9rem;
+        }
+
+        .event-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .highlight-box {
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: rgba(255, 195, 15, 0.1);
+            border: 1px solid var(--accent-color);
+            font-size: 0.85rem;
+        }
+
+        .highlight-box h3 {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .btn-register {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn-register:hover {
+            background-color: #ff8c3f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 107, 8, 0.3);
+        }
+
+        .event-hashtags {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .event-hashtag {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .event-hashtag:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 3rem 7% 1.5rem;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .footer-social p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: #bbb;
+            font-size: 0.85rem;
+        }
+
+        .footer-social i {
+            margin-right: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .event-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                background-color: rgba(10, 17, 40, 0.95);
+                width: 70%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: 0.3s;
+                backdrop-filter: blur(10px);
+                z-index: 999;
+            }
+            
+            .navbar-nav.active {
+                right: 0;
+            }
+            
+            .navbar-nav a {
+                display: block;
+                margin: 1.2rem;
+                padding: 0.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .navbar-extra {
+                display: inline-block;
+            }
+            
+            .navbar {
+                justify-content: space-between;
+            }
+            
+            .event-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            
+            .social-sidebar {
+                flex-direction: row;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                background-color: rgba(10, 17, 40, 0.9);
+                justify-content: space-around;
+                padding: 8px 0;
+                backdrop-filter: blur(8px);
+            }
+
+            .social-sidebar a {
+                width: 35px;
+                height: 35px;
+                margin: 0;
+                border-radius: 50%;
+            }
+            
+            .social-sidebar a:hover {
+                width: 35px;
+                transform: translateY(-3px);
+            }
+            
+            .footer {
+                padding-bottom: 4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.youtube.com/@Deliserdang1" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://discord.gg/q7MD2hmY" class="discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.instagram.com/ff.deliserdang/" class="instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="navbar-logo">
+            <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+        </a>
+  
+        <div class="navbar-nav">
+            <a href="/">Home</a>
+            <a href="/daftarkan/">Daftarkan</a>
+            <a href="/informasi">Informasi</a>
+            <a href="/listevent" class="active">List Event</a>
+            <a href="/galery">Galery</a>
+            <a href="/leaderboard">Leaderboard</a>
+        </div>
+  
+        <div class="navbar-extra">
+            <a href="#" id="menu"><i class="fas fa-bars"></i></a>
+        </div>
+    </nav>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="events-header">
+            <h1 class="events-title">LIST <span>EVENT</span></h1>
+            <p class="events-subtitle">JADWAL TURNAMEN FREE FIRE DI DELI SERDANG</p>
+        </div>
+
+        <div class="event-container">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <img src="/assets/ffnscqds.jpg" alt="FFNS 2025 Fall City Qualifier" class="event-banner">
+                <div class="event-content">
+                    <h2 class="event-title">FFNS 2025 Fall City Qualifier</h2>
+                    <p class="event-description">
+                        Halo Brayy.. Mana ni yang udh nunggu FFNS DELI SERDANG?? Ini kita sudah Open City Qualifier FFNS!
+                    </p>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Matchday</h4>
+                                <p>18 MEI 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Lokasi</h4>
+                                <p>V.O.C CAFE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Biaya</h4>
+                                <p>Gratis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Hadiah</h4>
+                                <p>Rp 1.200.000 + Piala</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-cta">
+                        <div class="highlight-box">
+                            <h3>CP: 083131861584 (Dr.Az)</h3>
+                        </div>
+                        
+                        <a href="https://ff.garena.co.id/ffns2025fall-deli-serdang" class="btn-register">Daftar</a>
+                    </div>
+                    
+                    <div class="event-hashtags">
+                        <span class="event-hashtag">#freefire</span>
+                        <span class="event-hashtag">#ffns</span>
+                        <span class="event-hashtag">#ffdeliserdang</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example of additional event card -->
+            <!-- <div class="event-card">
+                <img src="/assets/ffnscqds.jpg" alt="Tournament Example" class="event-banner">
+                <div class="event-content">
+                    <h2 class="event-title">Tournament Example</h2>
+                    <p class="event-description">
+                        Contoh event turnamen lain yang bisa ditambahkan ke dalam layout baru yang lebih kompak.
+                    </p>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Matchday</h4>
+                                <p>25 MEI 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Lokasi</h4>
+                                <p>Lubuk Pakam</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Biaya</h4>
+                                <p>Rp 50.000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Hadiah</h4>
+                                <p>Rp 1.000.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-cta">
+                        <div class="highlight-box">
+                            <h3>CP: 083131861584</h3>
+                        </div>
+                        
+                        <a href="#" class="btn-register">Daftar</a>
+                    </div>
+                    
+                    <div class="event-hashtags">
+                        <span class="event-hashtag">#freefire</span>
+                        <span class="event-hashtag">#tournament</span>
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- You can add more event cards here -->
+            <!-- <div class="event-card">
+                <img src="/assets/ffnscqds.jpg" alt="Tournament Example 2" class="event-banner">
+                <div class="event-content">
+                    <h2 class="event-title">Tournament Example 2</h2>
+                    <p class="event-description">
+                        Contoh event turnamen ketiga yang bisa ditambahkan ke dalam layout baru yang lebih kompak.
+                    </p>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Matchday</h4>
+                                <p>1 JUNI 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Lokasi</h4>
+                                <p>Deli Serdang</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Biaya</h4>
+                                <p>Rp 45.000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Hadiah</h4>
+                                <p>Rp 950.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-cta">
+                        <div class="highlight-box">
+                            <h3>CP: 083131861584</h3>
+                        </div>
+                        
+                        <a href="#" class="btn-register">Daftar</a>
+                    </div>
+                    
+                    <div class="event-hashtags">
+                        <span class="event-hashtag">#freefire</span>
+                        <span class="event-hashtag">#ffdeliserdang</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="/" class="footer-logo">
+                    <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+                </a>
+                <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@Deliserdang1"><i class="fab fa-youtube"></i></a>
+                    <a href="https://discord.gg/q7MD2hmY"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.instagram.com/ff.deliserdang/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Hubungi Kami</h3>
+                <p><i class="fas fa-envelope"></i> komunitasffdeliserdang@gmail.com</p>
+                <p><i class="fas fa-phone"></i>  083131861584</p>
+                <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Komunitas Free Fire Deli Serdang. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle menu mobile
+        const menuButton = document.querySelector('#menu');
+        const navbarNav = document.querySelector('.navbar-nav');
+
+        menuButton.addEventListener('click', function() {
+            navbarNav.classList.toggle('active');
+        });
+
+        // Menutup menu ketika mengklik di luar menu
+        document.addEventListener('click', function(e) {
+            if(!menuButton.contains(e.target) && !navbarNav.contains(e.target)) {
+                navbarNav.classList.remove('active');
+            }
+        });
+
+        // Animated Background
+        function createParticle() {
+            const animatedBg = document.querySelector('.animated-bg');
+            const particle = document.createElement('div');
+            
+            // Style untuk particle
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = 'rgba(255, 255, 255, 0.4)';
+            particle.style.borderRadius = '50%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.opacity = Math.random() * 0.4;
+            particle.style.animation = `moveParticle ${Math.random() * 8 + 5}s linear infinite`;
+            
+            // Tambahkan particle ke background
+            animatedBg.appendChild(particle);
+            
+            // Hapus particle setelah animasi berakhir
+            setTimeout(() => {
+                particle.remove();
+            }, 13000);
+        }
+
+        // Create initial particles
+        for (let i = 0; i < 40; i++) {
+            setTimeout(createParticle, i * 100);
+        }
+
+        // Create new particles periodically
+        setInterval(createParticle, 300);
+
+        // Keyframes untuk animasi particle
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes moveParticle {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    transform: translateY(-1000px) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
