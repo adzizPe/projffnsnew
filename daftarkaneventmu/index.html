@@ -544,90 +544,103 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: space-between;
-                padding: 0.8rem 4%;
-            }
-            
-            .navbar-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                background-color: rgba(10, 17, 40, 0.95);
-                width: 250px;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: 0.4s ease;
-                backdrop-filter: blur(10px);
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            }
-            
-            .navbar-nav.active {
-                right: 0;
-            }
-            
-            .navbar-nav a {
-                display: block;
-                margin: 1rem 0;
-                padding: 0.5rem;
-                font-size: 1.1rem;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .navbar-extra {
-                display: inline-block;
-            }
-            
-            .page-header {
-                padding: 120px 0 60px;
-            }
-            
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
-            .categories-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .social-sidebar {
-                flex-direction: row;
-                top: auto;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                background-color: rgba(10, 17, 40, 0.9);
-                justify-content: center;
-                gap: 30px;
-                padding: 10px 0;
-                backdrop-filter: blur(8px);
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-            }
+       /* Tablet improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+    margin-right: 23rem;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.6rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
 
-            .social-sidebar a {
-                width: 40px;
-                height: 40px;
-                margin: 0;
-                border-radius: 50%;
-            }
-            
-            .social-sidebar a:hover {
-                width: 40px;
-                transform: translateY(-5px);
-            }
-            
-            .footer {
-                padding-bottom: 5rem;
-            }
-        }
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
+}
         
         @media (max-width: 576px) {
             .page-header {
@@ -690,6 +703,7 @@
             <a href="/listevent">List Event</a>
             <a href="/galery">Galery</a>
             <a href="/leaderboard">Leaderboard</a>
+            <a href="/store">STORE</a>
         </div>
   
         <div class="navbar-extra">

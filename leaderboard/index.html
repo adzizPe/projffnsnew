@@ -419,102 +419,103 @@
             }
         }
 
-        @media (max-width: 768px) {
-            html {
-                font-size: 90%;
-            }
-            .navbar-extra a {
-    color: var(--text-light);
-    font-size: 1.5rem;
+       /* Tablet improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
   }
-            
-            .navbar-nav {
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                background-color: rgba(10, 17, 40, 0.95);
-                width: 70%;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 2rem;
-                transition: 0.3s;
-                backdrop-filter: blur(10px);
-                z-index: 999;
-            }
-            
-            .navbar-nav.active {
-                right: 0;
-            }
-            
-            .navbar-nav a {
-                display: block;
-                margin: 1.5rem;
-                padding: 0.5rem;
-                font-size: 1.2rem;
-            }
-            
-            .navbar-extra {
-                display: inline-block;
-                
-            }
-            
-            .navbar {
-                justify-content: space-between;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-about {
-                grid-column: span 1;
-            }
-            
-            .social-sidebar {
-                flex-direction: row;
-                top: auto;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                background-color: rgba(10, 17, 40, 0.9);
-                justify-content: space-around;
-                padding: 10px 0;
-                backdrop-filter: blur(8px);
-            }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+    margin-right: 23rem;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.6rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
 
-            .social-sidebar a {
-                width: 40px;
-                height: 40px;
-                margin: 0;
-                border-radius: 50%;
-            }
-            
-            .social-sidebar a:hover {
-                width: 40px;
-                transform: translateY(-5px);
-            }
-            
-            .footer {
-                padding-bottom: 5rem;
-            }
-            
-            .leaderboard-title {
-                font-size: 2.5rem;
-            }
-            
-            .tab-btn {
-                font-size: 1rem;
-                padding: 12px 20px;
-            }
-            
-            .grid-row {
-                justify-content: center;
-            }
-        }
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
+}
 
         @media (max-width: 576px) {
             .communities-grid {
@@ -570,6 +571,7 @@
             <a href="/listevent">List Event</a>
             <a href="/galery">Galery</a>
             <a href="/leaderboard" class="active">Leaderboard</a>
+            <a href="/store">STORE</a>
         </div>
   
         <div class="navbar-extra">

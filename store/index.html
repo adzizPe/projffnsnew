@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STORE - KOMUNITAS FREE FIRE DELI SERDANG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+ 
+    <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
+    <style>
+        /* Store-specific styles */
+        .store-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .store-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .store-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .store-header p {
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .store-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .store-tab {
+            padding: 1rem 1.5rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            color: #bbb;
+        }
+
+        .store-tab:hover {
+            color: var(--primary-color);
+        }
+
+        .store-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .store-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .store-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TopUp Section */
+        .topup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .topup-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .topup-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 8, 0.3);
+        }
+
+        .topup-diamond {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .topup-price {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .topup-card .button {
+            width: 100%;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 8, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-card .button {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0a1128, #111a2d);
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 8, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #fff;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 107, 8, 0.2);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-method {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method:hover {
+            background-color: rgba(255, 107, 8, 0.1);
+            border-color: rgba(255, 107, 8, 0.3);
+        }
+
+        .payment-method.selected {
+            background-color: rgba(255, 107, 8, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .payment-method-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .payment-method-logo {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .payment-method-name {
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-hint {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .selected-file {
+            background-color: rgba(255, 107, 8, 0.1);
+            border-radius: 5px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .file-name {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .step-navigation .button {
+            min-width: 120px;
+        }
+
+        .step-navigation .button.outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .step-navigation .button.outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .steps-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 5px;
+        }
+
+        .step-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .qris-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .qris-code {
+            max-width: 200px;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+        }
+
+        .qris-instructions {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .qris-instructions ol {
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+
+        .qris-instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-label {
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .success-message {
+            text-align: center;
+            color: #4CAF50;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            .store-container {
+                padding: 1rem;
+            }
+
+            .store-tabs {
+                overflow-x: auto;
+                justify-content: start;
+                padding-bottom: 0.5rem;
+            }
+
+            .store-tab {
+                padding: 0.8rem 1rem;
+                white-space: nowrap;
+            }
+
+            .topup-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .modal-content {
+                padding: 1.5rem;
+                margin: 20px auto;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .step-navigation .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.youtube.com/@Deliserdang1" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://discord.gg/q7MD2hmY" class="discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.instagram.com/ff.deliserdang/" class="instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">
+            <img src="assets/logoffds.png" alt="FF Deli Serdang Logo">
+        </a>
+  
+        <div class="navbar-nav">
+            <a href="index.html">Home</a>
+            <a href="/daftarkan">Daftarkan</a>
+            <a href="/informasi">Informasi</a>
+            <a href="/listevent">List Event</a>
+            <a href="/galery">Galery</a>
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="/store" class="active">STORE</a>
+        </div>
+        
+        <div class="navbar-extra">
+            <a href="#" id="menu"><i class="fas fa-bars"></i></a>
+        </div>
+    </nav>
+
+    <!-- Store Header -->
+    <div style="margin-top: 120px;"></div>
+
+    <!-- Store Content -->
+    <section class="store-section">
+        <div class="store-container">
+            <div class="store-header">
+                <h1>FFDS STORE</h1>
+                <p>Dapatkan berbagai kebutuhan gaming Free Fire dan merchandise resmi Komunitas Free Fire Deli Serdang. Kami menyediakan layanan top up diamond dengan harga terbaik dan produk berkualitas untuk mendukung pengalaman gaming Anda.</p>
+            </div>
+
+            <!-- Store Tabs -->
+            <div class="store-tabs">
+                <div class="store-tab active" data-tab="topup">TopUp Free Fire</div>
+                <div class="store-tab" data-tab="merchandise">Merchandise</div>
+                <div class="store-tab" data-tab="gaming">Alat Gaming</div>
+                <div class="store-tab" data-tab="trophy">Trophy</div>
+            </div>
+
+            <!-- TopUp Free Fire Content -->
+            <div class="store-content active" id="topup-content">
+                <div class="topup-grid">
+                    <!-- Diamond Packages -->
+                    <div class="topup-card" data-diamond="70" data-price="10000">
+                        <div class="topup-diamond">70 💎</div>
+                        <div class="topup-price">Rp 10.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="140" data-price="20000">
+                        <div class="topup-diamond">140 💎</div>
+                        <div class="topup-price">Rp 20.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="210" data-price="30000">
+                        <div class="topup-diamond">210 💎</div>
+                        <div class="topup-price">Rp 30.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="355" data-price="50000">
+                        <div class="topup-diamond">355 💎</div>
+                        <div class="topup-price">Rp 50.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="720" data-price="100000">
+                        <div class="topup-diamond">720 💎</div>
+                        <div class="topup-price">Rp 100.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="1450" data-price="200000">
+                        <div class="topup-diamond">1450 💎</div>
+                        <div class="topup-price">Rp 200.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="2180" data-price="300000">
+                        <div class="topup-diamond">2180 💎</div>
+                        <div class="topup-price">Rp 300.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="3640" data-price="500000">
+                        <div class="topup-diamond">3640 💎</div>
+                        <div class="topup-price">Rp 500.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <div class="topup-card" data-diamond="7290" data-price="1000000">
+                        <div class="topup-diamond">7290 💎</div>
+                        <div class="topup-price">Rp 1.000.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <!-- Weekly Membership -->
+                    <div class="topup-card" data-diamond="Weekly Membership" data-price="30000">
+                        <div class="topup-diamond">Weekly Membership</div>
+                        <div class="topup-price">Rp 30.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+
+                    <!-- Monthly Membership -->
+                    <div class="topup-card" data-diamond="Monthly Membership" data-price="150000">
+                        <div class="topup-diamond">Monthly Membership</div>
+                        <div class="topup-price">Rp 150.000</div>
+                        <button class="button buy-button">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merchandise Content -->
+            <div class="store-content" id="merchandise-content">
+                <div class="products-grid">
+                    <!-- Merchandise Products -->
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/1234567890">
+                        <img src="/api/placeholder/400/320" alt="Kaos FFDS Official" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Kaos FFDS Official - Limited Edition</h3>
+                            <div class="product-price">Rp 150.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/1234567891">
+                        <img src="/api/placeholder/400/320" alt="Hoodie FFDS" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Hoodie FFDS - Community Edition</h3>
+                            <div class="product-price">Rp 250.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/1234567892">
+                        <img src="/api/placeholder/400/320" alt="Topi FFDS" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Topi FFDS - Exclusive Design</h3>
+                            <div class="product-price">Rp 85.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/1234567893">
+                        <img src="/api/placeholder/400/320" alt="Gantungan Kunci FFDS" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Gantungan Kunci FFDS - Collection</h3>
+                            <div class="product-price">Rp 25.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alat Gaming Content -->
+            <div class="store-content" id="gaming-content">
+                <div class="products-grid">
+                    <!-- Gaming Products -->
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/2234567890">
+                        <img src="/api/placeholder/400/320" alt="Gamepad FFDS" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Gamepad Pro Gaming FFDS Edition</h3>
+                            <div class="product-price">Rp 350.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/2234567891">
+                        <img src="/api/placeholder/400/320" alt="Headset Gaming" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Headset Gaming FFDS Premium</h3>
+                            <div class="product-price">Rp 450.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/2234567892">
+                        <img src="/api/placeholder/400/320" alt="Trigger FFDS" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Mobile Trigger FFDS Pro Series</h3>
+                            <div class="product-price">Rp 120.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/2234567893">
+                        <img src="/api/placeholder/400/320" alt="Cooling Fan" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Mobile Cooling Fan FFDS Special</h3>
+                            <div class="product-price">Rp 180.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trophy Content -->
+            <div class="store-content" id="trophy-content">
+                <div class="products-grid">
+                    <!-- Trophy Products -->
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/3234567890">
+                        <img src="/api/placeholder/400/320" alt="Trophy Gold" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Trophy Gold Championship Edition</h3>
+                            <div class="product-price">Rp 750.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/3234567891">
+                        <img src="/api/placeholder/400/320" alt="Trophy Silver" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Trophy Silver Tournament Series</h3>
+                            <div class="product-price">Rp 550.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/3234567892">
+                        <img src="/api/placeholder/400/320" alt="Medal Set" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Medal Set Premium (Gold, Silver, Bronze)</h3>
+                            <div class="product-price">Rp 300.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-shopee="https://shopee.co.id/product/123456789/3234567893">
+                        <img src="/api/placeholder/400/320" alt="Trophy Custom" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Trophy Custom Design FFDS Logo</h3>
+                            <div class="product-price">Rp 950.000</div>
+                            <a href="#" class="button shopee-button">Beli di Shopee</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TopUp Modal -->
+    <div class="modal" id="topupModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">TopUp Diamond Free Fire</h2>
+            
+            <div class="steps-indicator">
+                <div class="step-dot active" data-step="1"></div>
+                <div class="step-dot" data-step="2"></div>
+                <div class="step-dot" data-step="3"></div>
+            </div>
+            
+            <!-- Step 1: Input User Data -->
+            <div class="form-step active" id="step1">
+                <div class="form-group">
+                    <label for="userId">User ID Free Fire</label>
+                    <input type="text" id="userId" class="form-control" placeholder="Contoh: 12345678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nickname">Nickname</label>
+                    <input type="text" id="nickname" class="form-control" placeholder="Masukkan nickname Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email (Opsional)</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email anda">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="payment-proof">Bukti Pembayaran</label>
+                    <input type="file" class="form-control" id="payment-proof" name="payment-proof" accept="image/*" required>
+                    <small class="form-text text-muted">Upload screenshot bukti pembayaran QRIS</small>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary" id="submitOrder">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Metode Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <h6>QRIS All Payment</h6>
+                    <img src="assets/images/qris-code.jpg" alt="QRIS Code" class="img-fluid mb-2" style="max-width: 250px;">
+                    <p>Scan QR Code diatas menggunakan aplikasi e-wallet atau m-banking anda</p>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle"></i> Setelah melakukan pembayaran, silahkan upload bukti pembayaran pada form.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary" id="continueToForm">Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Store Section -->
+<section id="store" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">STORE</h2>
+        
+        <!-- Store Navigation -->
+        <ul class="nav nav-pills mb-4 justify-content-center" id="storeTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="topup-tab" data-bs-toggle="pill" data-bs-target="#topup" type="button" role="tab" aria-controls="topup" aria-selected="true">
+                    <i class="fas fa-gem me-2"></i>TopUp Free Fire
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="merchandise-tab" data-bs-toggle="pill" data-bs-target="#merchandise" type="button" role="tab" aria-controls="merchandise" aria-selected="false">
+                    <i class="fas fa-tshirt me-2"></i>Merchandise
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="gaming-tab" data-bs-toggle="pill" data-bs-target="#gaming" type="button" role="tab" aria-controls="gaming" aria-selected="false">
+                    <i class="fas fa-gamepad me-2"></i>Alat Gaming
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="trophy-tab" data-bs-toggle="pill" data-bs-target="#trophy" type="button" role="tab" aria-controls="trophy" aria-selected="false">
+                    <i class="fas fa-trophy me-2"></i>Trophy
+                </button>
+            </li>
+        </ul>
+        
+        <!-- Store Content -->
+        <div class="tab-content" id="storeTabContent">
+            <!-- TopUp Free Fire -->
+            <div class="tab-pane fade show active" id="topup" role="tabpanel" aria-labelledby="topup-tab">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card shadow">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-gem me-2"></i>TopUp Diamond Free Fire</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="topupForm">
+                                    <div class="mb-3">
+                                        <label for="userId" class="form-label">ID Free Fire</label>
+                                        <input type="text" class="form-control" id="userId" required placeholder="Masukkan User ID">
+                                        <small class="form-text text-muted">Pastikan ID yang dimasukkan sudah benar</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nickname" class="form-label">Nickname</label>
+                                        <input type="text" class="form-control" id="nickname" required placeholder="Nickname akan terdeteksi otomatis" readonly>
+                                    </div>
+                                    <div class="mt-4">
+                                        <label class="form-label">Pilih Nominal Diamond</label>
+                                        <div class="row row-cols-2 row-cols-md-3 g-3 diamond-options">
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">5 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 1.000</p>
+                                                        <input type="radio" name="diamondOption" value="5-1000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">12 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 2.000</p>
+                                                        <input type="radio" name="diamondOption" value="12-2000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">50 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 8.000</p>
+                                                        <input type="radio" name="diamondOption" value="50-8000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">70 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 10.000</p>
+                                                        <input type="radio" name="diamondOption" value="70-10000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">140 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 20.000</p>
+                                                        <input type="radio" name="diamondOption" value="140-20000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">355 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 50.000</p>
+                                                        <input type="radio" name="diamondOption" value="355-50000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">720 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 100.000</p>
+                                                        <input type="radio" name="diamondOption" value="720-100000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">1450 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 200.000</p>
+                                                        <input type="radio" name="diamondOption" value="1450-200000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card diamond-option">
+                                                    <div class="card-body text-center py-3">
+                                                        <img src="assets/images/diamond.png" alt="Diamond" width="40" class="mb-2">
+                                                        <h6 class="mb-1">2180 Diamonds</h6>
+                                                        <p class="price mb-0">Rp 300.000</p>
+                                                        <input type="radio" name="diamondOption" value="2180-300000" class="visually-hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card mt-4 selected-package d-none">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Detail Pesanan</h6>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1"><strong>User ID:</strong> <span id="summaryUserId">-</span></p>
+                                                    <p class="mb-1"><strong>Nickname:</strong> <span id="summaryNickname">-</span></p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1"><strong>Diamond:</strong> <span id="summaryDiamond">-</span></p>
+                                                    <p class="mb-1"><strong>Harga:</strong> <span id="summaryPrice">-</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 mt-4">
+                                        <button type="button" class="btn btn-primary" id="payNowBtn" disabled>Bayar Sekarang</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Form Modal -->
+            <div class="modal fade" id="dataFormModal" tabindex="-1" aria-labelledby="dataFormModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="dataFormModalLabel">Konfirmasi Data & Bukti Pembayaran</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="confirmationForm">
+                                <div class="form-group">
+                                    <label for="confirm-id">User ID</label>
+                                    <input type="text" class="form-control" id="confirm-id" readonly>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="confirm-nickname">Nickname</label>
+                                    <input type="text" class="form-control" id="confirm-nickname" readonly>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="confirm-diamond">Diamond</label>
+                                    <input type="text" class="form-control" id="confirm-diamond" readonly>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="confirm-price">Harga</label>
+                                    <input type="text" class="form-control" id="confirm-price" readonly>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="email">Email (Opsional)</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email anda">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="payment-proof">Bukti Pembayaran</label>
+                                    <input type="file" class="form-control" id="payment-proof" name="payment-proof" accept="image/*" required>
+                                    <small class="form-text text-muted">Upload screenshot bukti pembayaran QRIS</small>
+                                </div>
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary" id="submitOrder">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Merchandise -->
+            <div class="tab-pane fade" id="merchandise" role="tabpanel" aria-labelledby="merchandise-tab">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/merchandise/tshirt-1.jpg" class="card-img-top" alt="T-Shirt FF Deli Serdang">
+                            <div class="card-body">
+                                <h5 class="card-title">T-Shirt FF Deli Serdang</h5>
+                                <p class="card-text">Kaos resmi komunitas Free Fire Deli Serdang dengan desain eksklusif.</p>
+                                <p class="price">Rp 120.000</p>
+                                <a href="https://shopee.co.id/product-link-1" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/merchandise/hoodie-1.jpg" class="card-img-top" alt="Hoodie FF Deli Serdang">
+                            <div class="card-body">
+                                <h5 class="card-title">Hoodie FF Deli Serdang</h5>
+                                <p class="card-text">Hoodie nyaman dengan logo komunitas Free Fire Deli Serdang.</p>
+                                <p class="price">Rp 250.000</p>
+                                <a href="https://shopee.co.id/product-link-2" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/merchandise/cap-1.jpg" class="card-img-top" alt="Topi FF Deli Serdang">
+                            <div class="card-body">
+                                <h5 class="card-title">Topi FF Deli Serdang</h5>
+                                <p class="card-text">Topi baseball dengan emblem Free Fire Deli Serdang.</p>
+                                <p class="price">Rp 85.000</p>
+                                <a href="https://shopee.co.id/product-link-3" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alat Gaming -->
+            <div class="tab-pane fade" id="gaming" role="tabpanel" aria-labelledby="gaming-tab">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/gaming/gamepad-1.jpg" class="card-img-top" alt="Mobile Game Controller">
+                            <div class="card-body">
+                                <h5 class="card-title">Mobile Game Controller</h5>
+                                <p class="card-text">Controller game untuk smartphone dengan tombol L1R1 sensitive.</p>
+                                <p class="price">Rp 150.000</p>
+                                <a href="https://shopee.co.id/product-link-4" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/gaming/headset-1.jpg" class="card-img-top" alt="Gaming Headset">
+                            <div class="card-body">
+                                <h5 class="card-title">Gaming Headset</h5>
+                                <p class="card-text">Headset gaming dengan mikrofon noise cancellation untuk komunikasi tim yang lebih baik.</p>
+                                <p class="price">Rp 350.000</p>
+                                <a href="https://shopee.co.id/product-link-5" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/gaming/cooling-1.jpg" class="card-img-top" alt="Phone Cooling Fan">
+                            <div class="card-body">
+                                <h5 class="card-title">Phone Cooling Fan</h5>
+                                <p class="card-text">Kipas pendingin smartphone untuk performa gaming yang lebih baik.</p>
+                                <p class="price">Rp 120.000</p>
+                                <a href="https://shopee.co.id/product-link-6" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trophy -->
+            <div class="tab-pane fade" id="trophy" role="tabpanel" aria-labelledby="trophy-tab">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/trophy/trophy-1.jpg" class="card-img-top" alt="Trophy Free Fire Cup">
+                            <div class="card-body">
+                                <h5 class="card-title">Trophy Free Fire Cup</h5>
+                                <p class="card-text">Trophy untuk kompetisi Free Fire dengan desain eksklusif.</p>
+                                <p class="price">Rp 450.000</p>
+                                <a href="https://shopee.co.id/product-link-7" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/trophy/medal-1.jpg" class="card-img-top" alt="Medal Set Free Fire">
+                            <div class="card-body">
+                                <h5 class="card-title">Medal Set Free Fire</h5>
+                                <p class="card-text">Set medali emas, perak, dan perunggu untuk event Free Fire.</p>
+                                <p class="price">Rp 200.000</p>
+                                <a href="https://shopee.co.id/product-link-8" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="assets/images/trophy/plaque-1.jpg" class="card-img-top" alt="Plakat Free Fire Championship">
+                            <div class="card-body">
+                                <h5 class="card-title">Plakat Free Fire Championship</h5>
+                                <p class="card-text">Plakat kustom untuk penghargaan turnamen Free Fire.</p>
+                                <p class="price">Rp 300.000</p>
+                                <a href="https://shopee.co.id/product-link-9" class="btn btn-primary w-100" target="_blank">Beli di Shopee</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Diamond selection functionality
+    const diamondOptions = document.querySelectorAll('.diamond-option');
+    const payNowBtn = document.getElementById('payNowBtn');
+    const selectedPackage = document.querySelector('.selected-package');
+    const summaryUserId = document.getElementById('summaryUserId');
+    const summaryNickname = document.getElementById('summaryNickname');
+    const summaryDiamond = document.getElementById('summaryDiamond');
+    const summaryPrice = document.getElementById('summaryPrice');
+    
+    // Variables to store selected values
+    let selectedDiamond = null;
+    let selectedPrice = null;
+    
+    // Diamond option selection
+    diamondOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove active class from all options
+            diamondOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to selected option
+            this.classList.add('active');
+            
+            // Get the radio input and select it
+            const radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+            
+            // Get selected values
+            const value = radio.value.split('-');
+            selectedDiamond = value[0];
+            selectedPrice = value[1];
+            
+            // Update summary
+            const userId = document.getElementById('userId').value;
+            const nickname = document.getElementById('nickname').value;
+            
+            if (userId && nickname) {
+                summaryUserId.textContent = userId;
+                summaryNickname.textContent = nickname;
+                summaryDiamond.textContent = `${selectedDiamond} Diamonds`;
+                summaryPrice.textContent = `Rp ${Number(selectedPrice).toLocaleString('id-ID')}`;
+                
+                // Show selected package card
+                selectedPackage.classList.remove('d-none');
+                
+                // Enable pay now button
+                payNowBtn.disabled = false;
+            }
+        });
+    });
+    
+    // User ID input handling
+    const userIdInput = document.getElementById('userId');
+    const nicknameInput = document.getElementById('nickname');
+    
+    userIdInput.addEventListener('input', function() {
+        // In real implementation, you would verify the ID with an API
+        // For now we'll simulate with a timeout
+        if (this.value.length > 5) {
+            setTimeout(() => {
+                nicknameInput.value = `Player_${this.value.substr(0, 4)}`;
+                
+                // Update summary if package already selected
+                if (selectedDiamond && selectedPrice) {
+                    summaryUserId.textContent = this.value;
+                    summaryNickname.textContent = nicknameInput.value;
+                    summaryDiamond.textContent = `${selectedDiamond} Diamonds`;
+                    summaryPrice.textContent = `Rp ${Number(selectedPrice).toLocaleString('id-ID')}`;
+                    
+                    // Show selected package card
+                    selectedPackage.classList.remove('d-none');
+                    
+                    // Enable pay now button
+                    payNowBtn.disabled = false;
+                }
+            }, 500);
+        } else {
+            nicknameInput.value = '';
+            payNowBtn.disabled = true;
+            selectedPackage.classList.add('d-none');
+        }
+    });
+    
+    // Payment process
+    const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+    const dataFormModal = new bootstrap.Modal(document.getElementById('dataFormModal'));
+    
+    // Pay Now button click
+    payNowBtn.addEventListener('click', function() {
+        // Show payment modal
+        paymentModal.show();
+    });
+    
+    // Continue to form button click
+    document.getElementById('continueToForm').addEventListener('click', function() {
+        // Hide payment modal
+        paymentModal.hide();
+        
+        // Fill confirmation form data
+        document.getElementById('confirm-id').value = document.getElementById('userId').value;
+        document.getElementById('confirm-nickname').value = document.getElementById('nickname').value;
+        document.getElementById('confirm-diamond').value = `${selectedDiamond} Diamonds`;
+        document.getElementById('confirm-price').value = `Rp ${Number(selectedPrice).toLocaleString('id-ID')}`;
+        
+        // Show data form modal
+        dataFormModal.show();
+    });
+    
+    // Submit order form
+    document.getElementById('confirmationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const userId = document.getElementById('confirm-id').value;
+        const nickname = document.getElementById('confirm-nickname').value;
+        const diamond = document.getElementById('confirm-diamond').value;
+        const price = document.getElementById('confirm-price').value;
+        const email = document.getElementById('email').value;
+        const paymentProof = document.getElementById('payment-proof').files[0];
+        
+        // In real implementation, you would upload the file and process the form
+        // For now we'll simulate with a redirect to WhatsApp
+        
+        // Create WhatsApp message
+        const message = `*Order TopUp Diamond Free Fire*%0A%0A` +
+            `*User ID:* ${userId}%0A` +
+            `*Nickname:* ${nickname}%0A` +
+            `*Diamond:* ${diamond}%0A` +
+            `*Harga:* ${price}%0A` +
+            `*Email:* ${email || '-'}%0A%0A` +
+            `Bukti pembayaran sudah dikirim. Mohon proses pesanan saya. Terima kasih!`;
+        
+        // Redirect to WhatsApp
+        const waNumber = '6281234567890'; // Replace with the admin's WhatsApp number
+        window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
+        
+        // Close modal
+        dataFormModal.hide();
+        
+        // Reset form
+        document.getElementById('topupForm').reset();
+        document.querySelectorAll('.diamond-option').forEach(opt => opt.classList.remove('active'));
+        document.querySelector('.selected-package').classList.add('d-none');
+        payNowBtn.disabled = true;
+        
+        // Show success message
+        alert('Pesanan Anda telah dikirim ke admin! Silahkan lanjutkan chat di WhatsApp.');
+    });
+
+    // Handle file upload preview
+    document.getElementById('payment-proof').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            // Here you can add code to preview the image if needed
+            console.log('File selected:', file.name);
+        }
+    });
+
+    // Add custom styling
+    const style = document.createElement('style');
+    style.textContent = `
+        .diamond-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .diamond-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .diamond-option.active {
+            border-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        .price {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+// Add CSS to the head
+document.addEventListener('DOMContentLoaded', function() {
+    const customStyles = document.createElement('style');
+    customStyles.innerHTML = `
+    /* Store Nav Styling */
+    #storeTab .nav-link {
+        border-radius: 30px;
+        padding: 10px 20px;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+    }
+    
+    #storeTab .nav-link.active {
+        background-color: #0d6efd;
+        color: white;
+    }
+    
+    /* Diamond Options Styling */
+    .diamond-options {
+        margin-top: 15px;
+    }
+    
+    .diamond-option {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .diamond-option:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .diamond-option.active {
+        border: 2px solid #0d6efd;
+    }
+    
+    /* Form Styling */
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    /* Button Styling */
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    }
+    
+    /* Product Card Styling */
+    .product-card {
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .product-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .product-card .card-title {
+        font-weight: 600;
+    }
+    
+    .product-card .price {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0d6efd;
+        margin-bottom: 15px;
+    }
+    `;
+    document.head.appendChild(customStyles);
+});
+</script>
+</body>
+</html>

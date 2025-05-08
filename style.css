@@ -172,9 +172,9 @@ body {
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem 7%;
+  padding: 1rem 5%;
   background-color: rgba(10, 17, 40, 0.9);
   position: fixed;
   top: 0;
@@ -188,16 +188,19 @@ body {
 .navbar-logo img {
   height: 80px;
 }
+
 .navbar-nav {
   display: flex;
-  justify-content: center; /* Center the links horizontally */
-  margin: 0 auto; /* Auto margins for centering */
-  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .navbar-nav a {
   color: var(--text-light);
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
   font-weight: 500;
   position: relative;
   transition: var(--transition);
@@ -227,11 +230,9 @@ body {
   width: 100%;
 }
 
-/* Keep the mobile menu icon to the right */
+/* Remove the mobile menu icon */
 .navbar-extra {
-  position: absolute;
-  right: 7%;
-  display: none; /* Hidden on desktop */
+  display: none;
 }
 
 /* Hero Section */
@@ -261,11 +262,11 @@ body {
 
 .hero-subtitle {
   font-size: 2rem;
-  font-family: 'Courier New', Courier, monospace; /* Menggunakan font monospace agar mirip dengan ketikan */
+  font-family: 'Courier New', Courier, monospace;
   display: inline-block;
-  overflow: hidden; /* Menyembunyikan teks yang belum muncul */
-  white-space: nowrap; /* Menghindari teks menjadi baris baru */
-  border-right: 3px solid; /* Menambahkan kursor blink seperti ketikan */
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid;
   animation: typing 5s steps(20) infinite, blink-caret 3s step-end infinite;
   color: var(--primary-color);
 }
@@ -276,22 +277,16 @@ body {
   text-transform: uppercase;
   margin-bottom: 1rem;
   color: var(--text-light);
-  
 }
 
 .hero-title span {
   color: var(--primary-color);
   margin-left: 0.5rem;
-  
 }
 
 .hero-description {
   margin-bottom: 2rem;
-  text-align: justify-content: center;
   font-size: 1.1rem;
- 
-
-  
 }
 
 .cta-buttons {
@@ -312,7 +307,7 @@ body {
 }
 
 .button:hover {
-  background-color: #e05600;: linear-gradient(45deg, #ff6b08, #ff8948);
+  background-color: #e05600;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(255, 107, 8, 0.2);
 }
@@ -327,13 +322,14 @@ body {
 }
 
 .features {
-  padding: 3rem 7% 5rem; /* Reduced top padding from 5rem to 3rem */
+  padding: 3rem 7% 5rem;
   background-color: var(--bg-dark);
   position: relative;
-  z-index: 1; /* Ensure proper stacking */
+  z-index: 1;
 }
+
 .hero + .features {
-  margin-top: -2rem; /* Negative margin to pull it up */
+  margin-top: -2rem;
 }
 
 .features-container {
@@ -383,13 +379,12 @@ body {
 }
 
 /* Footer */
-/* Fix Footer positioning */
 .footer {
   background-color: var(--secondary-color);
   padding: 4rem 7% 2rem;
-  position: relative; /* Ensure proper positioning */
-  z-index: 1; /* Ensure proper stacking */
-  margin-top: 2rem; /* Add some space before footer */
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
 }
 
 .footer-container {
@@ -473,6 +468,7 @@ body {
   font-size: 0.9rem;
   color: #888;
 }
+
 /* CSS untuk Event Card */
 .event-card {
   display: block;
@@ -527,262 +523,6 @@ body {
   font-size: 1rem;
 }
 
-/* Jika ingin menambahkan responsif */
-@media (max-width: 768px) {
-  .event-card {
-    max-width: 100%;
-  }
-  
-  .event-title {
-    font-size: 1.2rem;
-  }
-  
-  .event-info {
-    font-size: 0.8rem;
-  }
-  .hero-content{
-    margin-left: 21px;
-    margin-top: 25px;
-  }
-}
-
-
-/* Responsive Styles */
-@media (max-width: 1366px) {
-  .hero-content {
-    max-width: 50%;
-  }
-}
-
-@media (max-width: 992px) {
-  html {
-    font-size: 95%;
-  }
-  .hero + .features {
-    margin-top: -1rem; /* Less negative margin on medium screens */
-  }
-  
-  .features {
-    padding-top: 2rem; /* Less top padding on medium screens */
-  }
-  .hero-subtitle {
-    font-size: 6vw; /* Ukuran font lebih besar di layar kecil */
-    animation: typing 2s steps(20) infinite, blink-caret 2s step-end infinite; /* Durasi animasi lebih lama di layar kecil */
-  }
-  
-  
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 7rem;
-  }
-  
-  .hero-content {
-    max-width: 80%;
-    z-index: 1;
-  }
-  
-  .hero-image {
-    width: 100%;
-    clip-path: none;
-    opacity: 0.2;
-  }
-  
-  .cta-buttons {
-    justify-content: center;
-  }
-  
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  
-  .footer-about {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 768px) {
-  html {
-    font-size: 90%;
-  }
-  .navbar-logo img {
-    height: 60px;
-  }
-  .hero-subtitle {
-    font-size: 6vw; /* Ukuran font lebih besar di layar kecil */
-    animation: typing 2s steps(20) infinite, blink-caret 2s step-end infinite; /* Durasi animasi lebih lama di layar kecil */
-  }
-  .hero-description {
-    font-size: 1.2rem;
-    text-align: justify;
-    line-height: 1.4; /* Mengatur jarak antar baris teks */
-  }
-  .hero-title {
-    font-size: 2.5rem; /* Ukuran font lebih kecil di layar kecil */
-  }
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 60%;
-    }
-  }
-  
-  
-  .navbar-nav {
-    position: absolute;
-    top: 100%;
-    right: -100%;
-    background-color: rgba(10, 17, 40, 0.95);
-    width: 70%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 2rem;
-    transition: 0.3s;
-    backdrop-filter: blur(10px);
-    z-index: 999;
-  }
-  
-  .navbar-nav.active {
-    right: 0;
-  }
-  
-  .navbar-nav a {
-    display: block;
-    margin: 1.5rem;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-  }
-  
-  .navbar-extra {
-    position: static; /* Remove absolute positioning */
-    right: auto;
-    display: inline-block; /* Show on mobile */
-  }
-  .navbar {
-    justify-content: space-between; /* Revert to space-between for mobile */
-  }
-  
-  .navbar-extra a {
-    color: var(--text-light);
-    font-size: 1.5rem;
-  }
-  .navbar-logo {
-    position: static; /* Remove absolute positioning */
-    left: auto;
-  }
-  
-  
-  .hero-content {
-    max-width: 90%;
-    
-    
-  }
-  
-  .features-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-about {
-    grid-column: span 1;
-  }
-  
-  .footer {
-    padding-bottom: 5rem; /* Add extra padding at bottom to prevent content being covered by social sidebar */
-  }
-  
-  /* Ensure social sidebar stays on top */
-  .social-sidebar {
-    flex-direction: row;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    background-color: rgba(10, 17, 40, 0.9);
-    justify-content: space-around;
-    padding: 10px 0;
-    backdrop-filter: blur(8px);
-    z-index: 1000; /* Ensure it's above other elements */
-    position: fixed; /* Keep it fixed at bottom */
-  }
-
-  .social-sidebar a {
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    border-radius: 50%;
-  }
-  
-  .social-sidebar a:hover {
-    width: 40px;
-    transform: translateY(-5px);
-  }
-}
-
-@media (max-width: 576px) {
-  html {
-    font-size: 85%;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .button {
-    padding: 0.7rem 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero + .features {
-    margin-top: 0; /* No negative margin on small screens */
-  }
-  
-  .features {
-    padding-top: 1.5rem; /* Even less top padding on small screens */
-  }
-  
-  .footer {
-    padding-bottom: 6rem; /* More bottom padding on smaller screens */
-  }
-  .navbar-nav {
-    width: 80%;
-  }
-}
-
-/* Animation Keyframes */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 /* Styling untuk Iklan Section */
 .ads-section {
   padding: 40px 0;
@@ -797,6 +537,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 /* Leaderboard Styles */
 .leaderboard-section {
   padding: 40px 20px;
@@ -840,13 +581,6 @@ body {
   background-color: #f1f1f1;
 }
 
-@media screen and (max-width: 768px) {
-  .leaderboard-table {
-      font-size: 14px;
-  }
-}
-  
-
 .ads-content {
   width: 100%;
   max-width: 600px;
@@ -861,23 +595,6 @@ body {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #ddd;
-}
-
-/* Jika menggunakan video iklan, styling untuk video */
-.ads-content video {
-  width: 100%;
-  height: auto;
-}
-
-/* Responsif: Menyesuaikan ukuran di layar kecil */
-@media screen and (max-width: 768px) {
-  .ads-container {
-      flex-direction: column; /* Menampilkan konten secara vertikal pada layar kecil */
-  }
-
-  .ads-content {
-      margin-bottom: 20px; /* Menambahkan margin bawah untuk jarak antar konten */
-  }
 }
 
 /* Section Animation */
@@ -906,4 +623,247 @@ section.start-animation {
 
 .hero-title {
   animation: float 3s infinite ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1366px) {
+  .hero-content {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 95%;
+  }
+  
+  .hero + .features {
+    margin-top: -1rem;
+  }
+  
+  .features {
+    padding-top: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.8rem;
+    animation: typing 3s steps(20) infinite, blink-caret 3s step-end infinite;
+  }
+  
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 7rem;
+  }
+  
+  .hero-content {
+    max-width: 80%;
+    z-index: 1;
+  }
+  
+  .hero-image {
+    width: 100%;
+    clip-path: none;
+    opacity: 0.2;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+  
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-about {
+    grid-column: span 2;
+  }
+  
+  /* Make navbar links smaller on tablet */
+  .navbar-nav a {
+    font-size: 0.9rem;
+    margin: 0 0.4rem;
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
+
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 85%;
+  }
+  
+  /* Further navbar adjustments for extra small screens */
+  .navbar-nav {
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.75rem;
+    margin: 0 0.15rem;
+    padding: 0.25rem;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .button {
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .hero + .features {
+    margin-top: 0;
+  }
+  
+  .features {
+    padding-top: 1.5rem;
+  }
+  
+  .footer {
+    padding-bottom: 6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Ultra-compact navbar for very small screens */
+  .navbar-nav a {
+    font-size: 0.7rem;
+    margin: 0 0.1rem;
+    padding: 0.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
 }

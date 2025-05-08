@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
     <style>
         /* Base Styles */
         :root {
@@ -44,28 +43,32 @@
             position: relative;
         }
 
-        /* Animated Background */
         .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: var(--bg-dark);
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1c1b29 100%);
-        }
-        
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-color: rgba(0, 0, 0, 0.7);
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 20L20 0L40 20L20 40z' /%3E%3C/g%3E%3C/svg%3E");
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9;
+    background: url('/assets/moco.png');
+    background-size: cover; /* Membuat gambar menutupi seluruh area */
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1px); /* Atur tingkat blur dari 1px-20px sesuai keinginan */
+}
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9;
+    background-color: rgba(0, 0, 0, 0.6); /* Sesuaikan transparansi */
+    background-image: url('/assets/moco.png');
+    background-size: contain; /* Opsi: cover, contain, atau ukuran spesifik */
+    background-repeat: repeat; /* Opsi: repeat, no-repeat */
+    filter: blur(1px); /* Atur tingkat blur dari 1px-20px sesuai keinginan */
+}
 
         /* Social Media Sidebar */
         .social-sidebar {
@@ -105,6 +108,10 @@
 
         .social-sidebar .instagram {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-sidebar .whatsapp {
+            background-color: #25D366;
         }
 
         /* Navbar */
@@ -179,8 +186,7 @@
 
         /* Information Banner Section */
         .info-banner {
-            background-color: var(--secondary-color);
-            background-image: linear-gradient(135deg, var(--secondary-color) 0%, #1c1b29 100%);
+          
             color: white;
             padding: 140px 0 80px;
             position: relative;
@@ -196,7 +202,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          
             z-index: 0;
         }
         
@@ -381,6 +387,174 @@
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.9);
         }
+        
+        /* Application Steps Section */
+        .application-steps {
+            padding: 60px 0;
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+        
+        .step-card {
+            background: rgba(15, 25, 35, 0.5);
+            border: 1px solid rgba(255, 107, 8, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .step-card:hover {
+            border-color: rgba(255, 107, 8, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 8, 0.3);
+            z-index: 2;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        .step-content {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .step-details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 107, 8, 0.2);
+        }
+        
+        .step-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            padding: 10px 20px;
+            background-color: rgba(255, 107, 8, 0.2);
+            border: 1px solid var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .action-btn i {
+            font-size: 1.1rem;
+        }
+        
+        /* Rules Section */
+        .rules-section {
+            padding: 60px 0;
+            background-color: rgba(10, 17, 40, 0.3);
+            position: relative;
+        }
+        
+        .rules-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .rules-card {
+            background: rgba(15, 25, 35, 0.5);
+            border: 1px solid rgba(255, 107, 8, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .rules-list {
+            list-style: none;
+            counter-reset: rule-counter;
+        }
+        
+        .rules-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+            counter-increment: rule-counter;
+        }
+        
+        .rules-list li::before {
+            content: counter(rule-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .penalty-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .penalty-table th,
+        .penalty-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 107, 8, 0.2);
+        }
+        
+        .penalty-table th {
+            background-color: rgba(255, 107, 8, 0.2);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .penalty-table tr:hover {
+            background-color: rgba(255, 107, 8, 0.1);
+        }
 
         /* Footer */
         .footer {
@@ -498,7 +672,7 @@
             }
         }
         
-        .info-title, .info-desc, .support-grid, .attention-box {
+        .info-title, .info-desc, .support-grid, .attention-box, .step-card {
             animation: fadeInUp 0.8s ease-out forwards;
         }
         
@@ -514,8 +688,20 @@
             animation-delay: 0.6s;
         }
         
-        .attention-box {
+        .attention-box, .step-card:nth-child(1) {
             animation-delay: 0.8s;
+        }
+        
+        .step-card:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .step-card:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+        
+        .step-card:nth-child(4) {
+            animation-delay: 1.4s;
         }
 
         /* Custom Scrollbar */
@@ -587,67 +773,49 @@
             }
         }
         
+        /* Tablet improvements */
         @media (max-width: 768px) {
+            html {
+                font-size: 90%;
+            }
+            
+            /* Navbar adjustments for mobile */
             .navbar {
-                justify-content: space-between;
-                padding: 0.8rem 4%;
+                flex-wrap: wrap;
+                padding: 0.5rem 3%;
+            }
+            
+            .navbar-logo img {
+                height: 30px;
+                margin-right: 23rem;
             }
             
             .navbar-nav {
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                background-color: rgba(10, 17, 40, 0.95);
-                width: 70%;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 2rem;
-                transition: 0.3s;
-                backdrop-filter: blur(10px);
-                z-index: 999;
-            }
-            
-            .navbar-nav.active {
-                right: 0;
-            }
-            
-            .navbar-nav a {
-                display: block;
-                margin: 1.2rem;
-                padding: 0.5rem;
-                font-size: 1.1rem;
-            }
-            
-            .navbar-extra {
-                display: inline-block;
-            }
-            
-            .info-banner {
-                padding: 120px 0 60px;
-                text-align: center;
-            }
-            
-            .info-banner-container {
-                text-align: center;
-            }
-            
-            .info-title {
-                font-size: 2.5rem;
+                order: 3; /* Push nav below logo */
+                width: 100%;
+                margin-top: 0.1rem;
                 justify-content: center;
             }
             
-            .info-desc {
-                margin-left: auto;
-                margin-right: auto;
+            .navbar-nav a {
+                font-size: 0.6rem;
+                margin: 0 0.2rem;
+                padding: 0.3rem;
             }
             
-            .diagonal-accent {
-                display: none;
+            .footer-container {
+                grid-template-columns: 1fr;
             }
             
+            .footer-about {
+                grid-column: span 1;
+            }
+            
+            .footer {
+                padding-bottom: 5rem;
+            }
+            
+            /* Social sidebar adjustment */
             .social-sidebar {
                 flex-direction: row;
                 top: auto;
@@ -657,27 +825,25 @@
                 transform: none;
                 background-color: rgba(10, 17, 40, 0.9);
                 justify-content: space-around;
-                padding: 8px 0;
+                padding: 10px 0;
                 backdrop-filter: blur(8px);
+                z-index: 1000;
+                position: fixed;
             }
 
             .social-sidebar a {
-                width: 35px;
-                height: 35px;
+                width: 40px;
+                height: 40px;
                 margin: 0;
                 border-radius: 50%;
             }
             
             .social-sidebar a:hover {
-                width: 35px;
-                transform: translateY(-3px);
-            }
-            
-            .footer {
-                padding-bottom: 4rem;
+                width: 40px;
+                transform: translateY(-5px);
             }
         }
-        
+            
         @media (max-width: 576px) {
             .info-title {
                 font-size: 2rem;
@@ -696,6 +862,15 @@
             .footer-about, .footer-social {
                 min-width: 100%;
             }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -709,6 +884,7 @@
         <a href="https://www.youtube.com/@Deliserdang1" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         <a href="https://discord.gg/q7MD2hmY" class="discord" aria-label="Discord"><i class="fab fa-discord"></i></a>
         <a href="https://www.instagram.com/ff.deliserdang/" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <!-- Navbar -->
@@ -724,6 +900,7 @@
             <a href="/listevent">List Event</a>
             <a href="/galery">Galery</a>
             <a href="/leaderboard">Leaderboard</a>
+            <a href="/store">STORE</a>
         </div>
   
         <div class="navbar-extra">
@@ -738,81 +915,216 @@
                 <i class="fas fa-info-circle"></i>
                 INFORMASI DUKUNGAN
             </h1>
-            <div class="diagonal-accent"></div>
-            <p class="info-desc">Berikut ini adalah informasi lengkap mengenai dukungan yang bisa didapatkan dari Komunitas Free Fire Deli Serdang untuk kegiatan gaming kamu.</p>
+            
+            
         </div>
     </section>
 
     <!-- Information Content Section -->
-    <section class="info-content">
-        <div class="info-container">
-            <h2 class="section-title">Kegiatan yang didukung</h2>
-            
-            <div class="support-grid">
-                <div class="support-card">
-                    <h3 class="support-type">Offline</h3>
-                    <p class="support-desc">Semua kegiatan: Nobar, Tournament, Gathering dan Workshop bisa mendapatkan support</p>
-                    
-                    <ul class="support-list">
-                        <li>Diamond - sesuai jumlah peserta)</li>
-                        <li>CR GARENA - melalui pengajuan sesuai guide</li>
-                        <li>Exposure - Social Media Free Fire</li>
-                        <li>Merchandise - Hanya tersedia di periode tertentu yang akan diinfokan pada waktunya</li>
-                    </ul>
-                </div>
-                
-                <div class="support-card">
-                    <h3 class="support-type">Online</h3>
-                    <p class="support-desc">Semua Tournament bisa mendapatkan support di bawah:</p>
-                    
-                    <ul class="support-list">
-                        <li>Exposure - Social Media Free Fire</li>
-                    </ul>
-                    
-                    <p class="support-note">Kegiatan online <span class="warning-text">tidak bisa</span> mendapatkan support Diamond dan PC Client kecuali <span class="highlight">Workshop</span></p>
+<section class="info-content">
+    <div class="info-container">
+        <h2 class="section-title">LANGKAH PENGAJUAN EVENT</h2>
+        
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">PROPOSAL SEDERHANA</h3>
+            <div class="step-content">
+                <p>Anda harus mengajukan proposal (sederhana) sebelum membuat acara. Dengan mengisi form ini, anda bisa mendapatkan Support exposure setelah acara diterima.</p>
+                <div class="btn-container">
+                    <a href="#" class="action-btn"><i class="fas fa-file-alt"></i> FORM PROPOSAL</a>
                 </div>
             </div>
             
-            <div class="download-section">
-                <p>Logo FFCA, Free Fire, dan info support diamond(bila event offline) <span class="highlight">WAJIB</span> dimasukkan ke dalam poster acara:</p>
-                <p>&gt;&gt;<a href="#" class="download-btn">Download Logo</a>&lt;&lt;</p>
-            </div>
-            
-            <div class="attention-box">
-                <p>*Selaku namanya, Free Fire Community Area hanya mendukung kegiatan berbasis game Free Fire. Untuk acara multi-game, kalian diperbolehkan untuk tetap mengajukan dan akan dipertimbangkan</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
-                </div>
-                <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@Deliserdang1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://discord.gg/q7MD2hmY" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                    <a href="https://www.instagram.com/ff.deliserdang/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="step-details">
+                <h4>A. PENGAJUAN CR GARENA</h4>
+                <p>Untuk pengajuan CR GARENA (PC Client), silahkan mengikuti guideline berikut</p>
+                <div class="btn-container">
+                    <a href="#" class="action-btn"><i class="fas fa-download"></i> GUIDE PC CLIENT</a>
                 </div>
             </div>
             
-            <div class="footer-social">
-                <h3>Hubungi Kami</h3>
-                <p><i class="fas fa-envelope"></i> komunitasffdeliserdang@gmail.com</p>
-                <p><i class="fas fa-phone"></i> 083131861584</p>
-                <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara, Indonesia</p>
+            <div class="step-details">
+                <h4>B. PEMBUATAN POSTER ACARA</h4>
+                <p>Logo Komunitas FFDS, FFCA, Free Fire, dan info support diamond(bila event offline) WAJIB dimasukkan ke dalam poster acara:</p>
+                <div class="btn-container">
+                    <a href="#" class="action-btn"><i class="fas fa-download"></i> DOWNLOAD LOGO</a>
+                    <a href="#" class="action-btn"><i class="fas fa-images"></i> TEMPLATE POSTER</a>
+                </div>
             </div>
         </div>
         
-        <div class="copyright">
-            <p>&copy; 2025 Komunitas Free Fire Deli Serdang. All Rights Reserved.</p>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">PROPOSAL DIPERIKSA DAN DITERIMA</h3>
+            <div class="step-content">
+                <p>Anda akan mendapatkan notifikasi lewat Whatsapp maksimal 7 hari kerja setelah proposal disubmit kedalam form. Setelah proposal diterima, Custom Room (bila tournament) akan masuk kedalam UID yang dicantumkan pada proposal</p>
+            </div>
         </div>
-    </footer>
+        
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">LAPORAN DAN DOKUMENTASI</h3>
+            <div class="step-content">
+                <p>Setelah acara selesai, silahkan Isi dan kirimkan Formulir Data Acara sesuai dengan yang sudah dilaksanakan. Dukungan hanya akan turun setelah laporan diterima oleh Tim Community. Untuk melengkapi laporan, silahkan mengikuti kebutuhan data dukungan di bawah</p>
+                <div class="btn-container">
+                    <a href="#" class="action-btn"><i class="fas fa-file-alt"></i> FORM LAPORAN</a>
+                </div>
+            </div>
+            
+            <div class="step-details">
+                <h4>A. TEMPLATE LAPORAN PESERTA</h4>
+                <p>Ini berisi nama, nomor HP, nickname, dan UID</p>
+                <div class="btn-container">
+                    <a href="#" class="action-btn"><i class="fas fa-download"></i> DOWNLOAD TEMPLATE LAPORAN</a>
+                </div>
+            </div>
+            
+            <div class="step-details">
+                <h4>B. DOKUMENTASI</h4>
+                <ul class="support-list">
+                    <li>Minimal 5 foto, yang berisi seluruh peserta, pemenang, dan penonton (Offline)</li>
+                    <li>1 slide atau folder "Daftar Pemenang" yang berisi foto masing-masing Juara</li>
+                    <li>Masukan semua link livestream yang ada dalam report</li>
+                    <li>Minimal 3 foto/screenshot dari setiap pertandingan online: Sebelum match(room), saat bermain (di tengah match), setelah pertandingan (hasil match).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <h3 class="step-title">PENGIRIMAN HADIAH</h3>
+            <div class="step-content">
+                <ul class="support-list">
+                    <li>Hadiah akan dikirim melalui inbox in-game</li>
+                    <li>Hadiah untuk setiap panitia dan pemenang akan dikirim pada maks 14 hari kerja setelah acara dan laporan sudah sesuai</li>
+                    <li>Laporan harus valid atau hadiah tidak dapat dikirim</li>
+                    <li>Hadiah yang tidak terkirim akibat kesalahan pengisian UID/Nickname dll bukan tanggung jawab Garena dan Komunitas</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2 class="section-title" style="margin-top: 60px;">DUKUNGAN YANG TERSEDIA</h2>
+        
+        <div class="support-grid">
+            <div class="support-card">
+                <h3 class="support-type">Offline</h3>
+                <p class="support-desc">Semua kegiatan: Nobar, Tournament, Classmeet bisa mendapatkan support berikut:</p>
+                <ul class="support-list">
+                    <li><span class="highlight">Diamond</span> - sesuai jumlah peserta</li>
+                    <li><span class="highlight">CR GARENA</span> - melalui pengajuan proposal</li>
+                    <li><span class="highlight">Exposure</span> - Social Media Komunitas Free Fire Deli Serdang</li>
+                    <li><span class="highlight">Merchandise</span> - Hanya tersedia di periode tertentu yang akan diinfokan pada waktunya</li>
+                </ul>
+            </div>
+            
+            <div class="support-card">
+                <h3 class="support-type">Online</h3>
+                <p class="support-desc">Semua Tournament bisa mendapatkan support di bawah:</p>
+                <ul class="support-list">
+                    <li><span class="highlight">Prize Pool</span> - Sesuai Target Team untuk Turnamen Mini</li>
+                    <li><span class="highlight">Exposure</span> - Social Media Komunitas Free Fire Deli Serdang</li>
+                </ul>
+                <p class="support-note"><span class="warning-text">#Kegiatan online tidak bisa mendapatkan support Diamond dan CR Garena</span></p>
+            </div>
+        </div>
+        
+        <div class="attention-box">
+            <h3 style="margin-bottom: 15px; color: var(--accent-color);"><i class="fas fa-exclamation-triangle"></i> PENTING!</h3>
+            <p>Logo Komunitas FFDS, FFCA, Free Fire, dan info support diamond(bila event offline) <span class="warning-text">WAJIB</span> dimasukkan ke dalam poster acara. Kegagalan mencantumkan logo-logo tersebut dapat mengakibatkan penolakan dukungan untuk event Anda.</p>
+        </div>
+        
+        <h2 class="section-title" style="margin-top: 60px;">PERATURAN</h2>
+        
+        <div class="rules-card">
+            <p style="margin-bottom: 20px;">Peraturan di bawah ini berlaku untuk semua panitia dan pengaju kegiatan di FFCA</p>
+            
+            <ol class="rules-list">
+                <li>Jangan bersikap tidak hormat kepada sesama komunitas dan staf resmi Garena (Admin Komunitas)</li>
+                <li>Jangan menjual Diamond atau skin (dari reward diamond yang kamu dapatkan).</li>
+                <li>Jangan membawa masalah dan perilaku permainan pribadi ke teman-teman komunitas yang berdampak negatif pada teman komunitas</li>
+                <li>Tanpa adanya player-player yang mengikuti, maka event dan komunitas kalian tidak dapat berjalan. Maka dari itu, terimalah masukan dan saran dari player dengan baik</li>
+                <li>Laporkan atau bertanya bila ada suatu masalah. Kita (Admin komunitas) akan sangat senang untuk membantu</li>
+                <li>Bersikap baiklah kepada komunitas lain dan anggota komunitas lainnya di Free Fire</li>
+                <li>Jangan berkelahi dengan komunitas lainnya karena alasan atau keputusan apa pun yang dibuat atau dirasakan. Kita selalu bisa berdiskusi dan menghasilkan keputusan yang cocok untuk semua player dan anggota komunitas</li>
+            </ol>
+            
+            <div style="margin-top: 40px;">
+                <h4 style="color: var(--accent-color); margin-bottom: 15px;">Peringatan dan Penalti</h4>
+                <p style="margin-bottom: 15px;">Untuk list peringatan dan penalti, silahkan baca di bawah ini. Penalti berlaku untuk semua pengaju kegiatan dan kelompok panitia/pengurus dari acara tersebut</p>
+                
+                <table class="penalty-table">
+                    <thead>
+                        <tr>
+                            <th width="60%">PERILAKU</th>
+                            <th width="40%">PENALTI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Serangan pribadi ke komunitas atau anggota komunitas lain</td>
+                            <td>1x pelanggaran maka 1 Peringatan<br>3 Peringatan maka akan di Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                        <tr>
+                            <td>Serangan pribadi/tidak menghormati Admin Komunitas atau staf resmi Garena</td>
+                            <td>Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                        <tr>
+                            <td>Pelecehan Seksual - Setelah ditemukan dan diverifikasi, Anda akan segera dikeluarkan dari program dukungan ini</td>
+                            <td>Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                        <tr>
+                            <td>Penjualan Diamond</td>
+                            <td>Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                        <tr>
+                            <td>Memposting hal-hal yang dapat menempatkan Garena dan Free Fire dalam citra buruk</td>
+                            <td>Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                        <tr>
+                            <td>Berpura-pura menjadi Staf Garena Resmi untuk Keuntungan Pribadi</td>
+                            <td>Banlist dari program dukungan Community Free Fire</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="attention-box" style="margin-top: 40px; background: rgba(255, 107, 8, 0.1);">
+            <h3 style="margin-bottom: 15px; color: var(--primary-color);"><i class="fas fa-info-circle"></i> DISCLAIMER</h3>
+            <p>Seluruh keputusan yang dikeluarkan oleh Official Garena bersifat MUTLAK dan TIDAK DAPAT DIGANGGU GUGAT. Official Garena BERHAK MENGUBAH DAN MEREVISI peraturan kapanpun tanpa ada pemberitahuan sebelumnya, demi kenyamanan dan kelancaran program.</p>
+        </div>
+    </div>
+</section>
 
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <a href="/" class="footer-logo">
+                <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+            </a>
+            <p>Komunitas Free Fire Deli Serdang (FFDS) merupakan komunitas resmi Free Fire yang bergerak di wilayah Deli Serdang. Kami berkomitmen untuk memajukan ekosistem gaming dengan mendukung berbagai event Free Fire di wilayah Deli Serdang dan sekitarnya.</p>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@Deliserdang1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/q7MD2hmY" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.instagram.com/ff.deliserdang/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-social">
+            <h3>Hubungi Kami</h3>
+            <p><i class="fab fa-whatsapp"></i> +62 831-3186-1584</p>
+            <p><i class="far fa-envelope"></i> ffdeliserdang@gmail.com</p>
+            <p><i class="fab fa-instagram"></i> @ff.deliserdang</p>
+            <p><i class="fab fa-discord"></i> discord.gg/q7MD2hmY</p>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2025 Komunitas Free Fire Deli Serdang | All Rights Reserved
+    </div>
+</footer>
     <!-- JavaScript -->
     <script>
         // Toggle menu mobile

@@ -376,7 +376,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: brightness(0) invert(1);
+            
         }
         
         .benefit-title {
@@ -665,104 +665,100 @@
 
 /* Tablet improvements */
 @media (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-        padding: 0.8rem 4%;
-    }
-    
-    .navbar-nav {
-        position: fixed; /* Changed from absolute for better overlay */
-        top: 0;
-        right: -100%;
-        background-color: rgba(10, 17, 40, 0.95);
-        width: 250px; /* Fixed width instead of percentage */
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; /* Center items vertically */
-        transition: 0.4s ease; /* Smoother transition */
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .navbar-nav.active {
-        right: 0;
-    }
-    
-    .navbar-nav a {
-        display: block;
-        margin: 1rem 0; /* More compact spacing */
-        padding: 0.5rem;
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .navbar-extra {
-        display: inline-block;
-    }
-    
-    /* Mobile menu button animation */
-    .navbar-extra a i {
-        transition: transform 0.3s ease;
-    }
-    
-    .navbar-extra a.active i {
-        transform: rotate(90deg);
-    }
-    
-    .event-banner {
-        padding: 120px 0 80px;
-    }
-    
-    .event-title {
-        font-size: 2.8rem; /* Slightly larger than current mobile view */
-    }
-    
-    .benefits-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
-    .benefit-card {
-        flex: 0 0 calc(50% - 20px);
-        max-width: calc(50% - 20px);
-        min-height: 220px;
-    }
-    
-    /* Improved social sidebar */
-    .social-sidebar {
-        flex-direction: row;
-        top: auto;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        transform: none;
-        background-color: rgba(10, 17, 40, 0.9);
-        justify-content: center; /* Center icons */
-        gap: 30px; /* Spaced out icons */
-        padding: 10px 0;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-    }
+  html {
+    font-size: 90%;
+  }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+    margin-right: 23rem;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.6rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
 
-    .social-sidebar a {
-        width: 40px; /* Slightly larger */
-        height: 40px;
-        margin: 0;
-        border-radius: 50%;
-    }
-    
-    .social-sidebar a:hover {
-        width: 40px;
-        transform: translateY(-5px);
-    }
-    
-    .footer {
-        padding-bottom: 5rem; /* Extra padding to account for bottom social bar */
-    }
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
 }
 
 /* Mobile improvements */
@@ -961,6 +957,7 @@
             <a href="/listevent">List Event</a>
             <a href="/galery">Galery</a>
             <a href="/leaderboard">Leaderboard</a>
+            <a href="/store">STORE</a>
         </div>
   
         <div class="navbar-extra">
@@ -992,15 +989,7 @@
     <div class="benefits-container">
         <div class="benefit-card">
             <div class="benefit-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-                    <!-- Diamond Icon - Free Fire Style -->
-                    <circle cx="40" cy="40" r="38" fill="#191970" stroke="#4169E1" stroke-width="2" />
-                    <path d="M40 12 L60 32 L40 68 L20 32 Z" fill="#4169E1" stroke="#00BFFF" stroke-width="1.5" />
-                    <path d="M40 12 L50 32 L40 60 L30 32 Z" fill="#00BFFF" stroke="none" />
-                    <path d="M40 12 L45 24 L40 35 L35 24 Z" fill="#ffffff" stroke="none" opacity="0.6" />
-                    <path d="M36 25 L44 25 L42 19 L38 19 Z" fill="#ffffff" stroke="none" opacity="0.7" />
-                    <text x="40" y="80" font-family="Arial" font-size="8" fill="#ffffff" text-anchor="middle">FF</text>
-                </svg>
+             <img src="/assets/Diamond Box.png" alt="">
             </div>
             <h3 class="benefit-title">DIAMONDS</h3>
             <p class="benefit-desc"></p>

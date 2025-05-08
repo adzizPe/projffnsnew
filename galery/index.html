@@ -643,100 +643,103 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: space-between;
-                padding: 0.8rem 4%;
-            }
-            
-            .navbar-nav {
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                background-color: rgba(10, 17, 40, 0.95);
-                width: 70%;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 2rem;
-                transition: 0.3s;
-                backdrop-filter: blur(10px);
-                z-index: 999;
-            }
-            
-            .navbar-nav.active {
-                right: 0;
-            }
-            
-            .navbar-nav a {
-                display: block;
-                margin: 1.2rem;
-                padding: 0.5rem;
-                font-size: 1.1rem;
-            }
-            
-            .navbar-extra {
-                display: inline-block;
-            }
-            
-            .gallery-banner {
-                padding: 120px 0 60px;
-                text-align: center;
-            }
-            
-            .gallery-banner-container {
-                text-align: center;
-            }
-            
-            .gallery-title {
-                font-size: 2.5rem;
-                justify-content: center;
-            }
-            
-            .gallery-desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .diagonal-accent {
-                display: none;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .social-sidebar {
-                flex-direction: row;
-                top: auto;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                background-color: rgba(10, 17, 40, 0.9);
-                justify-content: space-around;
-                padding: 8px 0;
-                backdrop-filter: blur(8px);
-            }
+       /* Tablet improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+    margin-right: 23rem;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.6rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
 
-            .social-sidebar a {
-                width: 35px;
-                height: 35px;
-                margin: 0;
-                border-radius: 50%;
-            }
-            
-            .social-sidebar a:hover {
-                width: 35px;
-                transform: translateY(-3px);
-            }
-            
-            .footer {
-                padding-bottom: 4rem;
-            }
-        }
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
+}
         
         @media (max-width: 576px) {
             .gallery-title {
@@ -786,6 +789,7 @@
             <a href="/listevent">List Event</a>
             <a href="/galery" class="active">Galery</a>
             <a href="/leaderboard">Leaderboard</a>
+            <a href="/store">STORE</a>
         </div>
   
         <div class="navbar-extra">
@@ -800,7 +804,7 @@
                 <i class="fas fa-images"></i>
                 GALERI KOMUNITAS
             </h1>
-            <div class="diagonal-accent"></div>
+            
             <p class="gallery-desc">Kumpulan momen berkesan dari berbagai event Free Fire Deli Serdang yang telah kami selenggarakan untuk para gamers.</p>
         </div>
     </section>
@@ -812,8 +816,8 @@
             <div class="gallery-tabs">
                 <div class="gallery-tab active" data-filter="all">Semua</div>
                 <div class="gallery-tab" data-filter="tournament">Tournament</div>
-                <div class="gallery-tab" data-filter="gathering">Gathering</div>
-                <div class="gallery-tab" data-filter="workshop">Workshop</div>
+                <div class="gallery-tab" data-filter="gathering">Classmeet</div>
+              
                 <div class="gallery-tab" data-filter="nobar">Nobar</div>
             </div>
             
@@ -848,7 +852,7 @@
                 <div class="gallery-item" data-category="gathering">
                     <img src="/api/placeholder/400/225" alt="Gathering 2023">
                     <div class="gallery-overlay">
-                        <h3>Gathering Tahunan</h3>
+                        <h3>Classmeet</h3>
                         <p>Pertemuan komunitas Free Fire Deli Serdang di Taman Bunga Lubang Buaya</p>
                     </div>
                 </div>
@@ -856,27 +860,12 @@
                 <div class="gallery-item" data-category="gathering">
                     <img src="/api/placeholder/400/225" alt="Meet & Greet">
                     <div class="gallery-overlay">
-                        <h3>Meet & Greet</h3>
+                        <h3>Classmeet</h3>
                         <p>Pertemuan dengan Pro Player Free Fire Indonesia</p>
                     </div>
                 </div>
                 
-                <!-- Workshop Photos -->
-                <div class="gallery-item" data-category="workshop">
-                    <img src="/api/placeholder/400/225" alt="Workshop Strategy">
-                    <div class="gallery-overlay">
-                        <h3>Workshop Strategy</h3>
-                        <p>Belajar strategi dan teknik bermain dari para pemain profesional</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="workshop">
-                    <img src="/api/placeholder/400/225" alt="Content Creator Workshop">
-                    <div class="gallery-overlay">
-                        <h3>Content Creator Workshop</h3>
-                        <p>Pelatihan menjadi content creator game yang sukses</p>
-                    </div>
-                </div>
+             
                 
                 <!-- Nobar Photos -->
                 <div class="gallery-item" data-category="nobar">
