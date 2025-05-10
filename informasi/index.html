@@ -9,88 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-    /* Table styles for the support information */
-        .support-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0 30px;
-            background: rgba(15, 25, 35, 0.7);
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .support-table thead th {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 15px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .support-table tbody td {
-            padding: 10px 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .support-table .event-type {
-            background-color: rgba(255, 107, 8, 0.1);
-            color: var(--text-light);
-            font-weight: 600;
-            text-align: left;
-        }
-        
-        .support-table tr:hover td {
-            background-color: rgba(255, 107, 8, 0.1);
-        }
-        
-        .table-caption {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 30px 0 15px;
-            color: var(--accent-color);
-            text-align: center;
-        }
-        
-        .table-note {
-            font-size: 0.85rem;
-            font-style: italic;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-        }
-        
-        .grade-column {
-            background-color: rgba(255, 195, 15, 0.1);
-            font-weight: 600;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .support-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .support-table {
-                font-size: 0.75rem;
-            }
-            
-            .support-table thead th,
-            .support-table tbody td {
-                padding: 8px 10px;
-            }
-            
-            .table-scroll {
-                overflow-x: auto;
-                margin-bottom: 20px;
-            }
-        }
         /* Base Styles */
         :root {
             --primary-color: #ff6b08;
@@ -125,32 +43,34 @@
             position: relative;
         }
 
+        /* Background Effects */
         .animated-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -9;
-    background: url('/assets/moco.png');
-    background-size: cover; /* Membuat gambar menutupi seluruh area */
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(1px); /* Atur tingkat blur dari 1px-20px sesuai keinginan */
-}
-.bg-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -9;
-    background-color: rgba(0, 0, 0, 0.6); /* Sesuaikan transparansi */
-    background-image: url('/assets/moco.png');
-    background-size: contain; /* Opsi: cover, contain, atau ukuran spesifik */
-    background-repeat: repeat; /* Opsi: repeat, no-repeat */
-    filter: blur(1px); /* Atur tingkat blur dari 1px-20px sesuai keinginan */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -9;
+            background: url('/assets/moco.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(1px);
+        }
+        
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -9;
+            background-color: rgba(0, 0, 0, 0.6);
+            background-image: url('/assets/moco.png');
+            background-size: contain;
+            background-repeat: repeat;
+            filter: blur(1px);
+        }
 
         /* Social Media Sidebar */
         .social-sidebar {
@@ -268,24 +188,12 @@
 
         /* Information Banner Section */
         .info-banner {
-          
             color: white;
             padding: 140px 0 80px;
             position: relative;
             overflow: hidden;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             margin-top: 0;
-        }
-        
-        .info-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-          
-            z-index: 0;
         }
         
         .info-banner-container {
@@ -321,7 +229,7 @@
             max-width: 700px;
             opacity: 0.9;
         }
-        
+
         /* Information Content Section */
         .info-content {
             padding: 80px 0;
@@ -343,7 +251,70 @@
             padding-left: 15px;
             border-left: 4px solid var(--primary-color);
         }
+
+        /* Table styles for the support information */
+        .support-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 30px;
+            background: rgba(15, 25, 35, 0.7);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
         
+        .support-table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .support-table tbody td {
+            padding: 10px 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .support-table .event-type {
+            background-color: rgba(255, 107, 8, 0.1);
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .support-table tr:hover td {
+            background-color: rgba(255, 107, 8, 0.1);
+        }
+        
+        .table-caption {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: var(--accent-color);
+            text-align: center;
+        }
+        
+        .table-note {
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+        
+        .grade-column {
+            background-color: rgba(255, 195, 15, 0.1);
+            font-weight: 600;
+        }
+        
+        /* Support Grid */
         .support-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -432,51 +403,8 @@
             color: var(--accent-color);
             font-weight: 600;
         }
-        
-        .download-section {
-            margin-top: 40px;
-            text-align: center;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 107, 8, 0.3);
-        }
-        
-        .download-btn:hover {
-            background-color: #ff8c3f;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 8, 0.4);
-        }
-        
-        .attention-box {
-            background: rgba(255, 195, 15, 0.1);
-            border-left: 4px solid var(--accent-color);
-            padding: 20px;
-            margin-top: 50px;
-            border-radius: 5px;
-        }
-        
-        .attention-box p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Application Steps Section */
-        .application-steps {
-            padding: 60px 0;
-            background-color: var(--bg-dark);
-            position: relative;
-        }
-        
+
+        /* Step Cards */
         .step-card {
             background: rgba(15, 25, 35, 0.5);
             border: 1px solid rgba(255, 107, 8, 0.1);
@@ -536,13 +464,6 @@
             color: var(--accent-color);
         }
         
-        .btn-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
         .action-btn {
             padding: 10px 20px;
             background-color: rgba(255, 107, 8, 0.2);
@@ -565,76 +486,56 @@
             font-size: 1.1rem;
         }
         
-        /* Rules Section */
-        .rules-section {
-            padding: 60px 0;
-            background-color: rgba(10, 17, 40, 0.3);
-            position: relative;
-        }
-        
-        .rules-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        
-        .rules-card {
-            background: rgba(15, 25, 35, 0.5);
-            border: 1px solid rgba(255, 107, 8, 0.1);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .rules-list {
-            list-style: none;
-            counter-reset: rule-counter;
-        }
-        
-        .rules-list li {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 20px;
-            counter-increment: rule-counter;
-        }
-        
-        .rules-list li::before {
-            content: counter(rule-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 28px;
-            height: 28px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
+        .btn-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .attention-box {
+            background: rgba(255, 195, 15, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 5px;
+        }
+        
+        .attention-box p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Tournament Tables */
+        .tournament-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 30px;
+            background: rgba(15, 25, 35, 0.7);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tournament-table th, 
+        .tournament-table td {
+            padding: 10px 5px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 8, 0.2);
             font-size: 0.9rem;
         }
         
-        .penalty-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-        }
-        
-        .penalty-table th,
-        .penalty-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 107, 8, 0.2);
-        }
-        
-        .penalty-table th {
-            background-color: rgba(255, 107, 8, 0.2);
+        .tournament-table th {
+            background-color: rgba(255, 107, 8, 0.8);
             color: white;
             font-weight: 600;
         }
         
-        .penalty-table tr:hover {
+        .tournament-table tr:nth-child(even) {
+            background-color: rgba(15, 25, 35, 0.5);
+        }
+        
+        .tournament-table tr:hover td {
             background-color: rgba(255, 107, 8, 0.1);
         }
 
@@ -853,6 +754,11 @@
             .diagonal-accent {
                 width: 250px;
             }
+            
+            .table-scroll {
+                overflow-x: auto;
+                margin-bottom: 20px;
+            }
         }
         
         /* Tablet improvements */
@@ -924,25 +830,24 @@
                 width: 40px;
                 transform: translateY(-5px);
             }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .support-table {
+                font-size: 0.75rem;
+            }
+            
+            .support-table thead th,
+            .support-table tbody td {
+                padding: 8px 10px;
+            }
         }
             
         @media (max-width: 576px) {
             .info-title {
                 font-size: 2rem;
-            }
-            
-            .download-btn {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-about, .footer-social {
-                min-width: 100%;
             }
             
             .btn-container {
@@ -952,6 +857,14 @@
             .action-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-about, .footer-social {
+                min-width: 100%;
             }
         }
     </style>
@@ -990,7 +903,7 @@
         </div>
     </nav>
 
-    <!-- Information Banner Section -->
+     <!-- Information Banner Section -->
     <section class="info-banner" id="informasi">
         <div class="info-banner-container">
             <h1 class="info-title">
@@ -1101,229 +1014,387 @@
                 <p class="support-note"><span class="warning-text">#Kegiatan online tidak bisa mendapatkan support Diamond dan CR Garena</span></p>
             </div>
         </div>
-        
-            <!-- Diamond Support Table -->
-            <h3 class="table-caption">Database Support Diamond (Offline)</h3>
+
+
+            
+            <h2 class="section-title">TABEL SUPPORT DIAMOND</h2>
+            
             <div class="table-scroll">
-                <table class="support-table">
+                <p class="table-caption">TOURNAMENT OFFLINE BATTLE ROYALE (4 player)</p>
+                <table class="tournament-table">
                     <thead>
                         <tr>
-                            <th rowspan="2">EVENTS</th>
-                            <th colspan="2">Persyaratan Jumlah Partisipan</th>
-                            <th rowspan="2">Total Diamond Support</th>
-                            <th rowspan="2">Max Diamond Untuk Komunitas</th>
-                            <th colspan="5">Diamond Untuk semua Juara (Jumlah kolom Distribusi)</th>
-                        </tr>
-                        <tr>
-                            <th>Grade</th>
-                            <th>Jumlah Tim/Pemain</th>
+                            <th class="grade-column">GRADE</th>
+                            <th>JUMLAH/TIM PEMAIN</th>
+                            <th>TOTAL SUPPORT DIAMOND</th>
+                            <th>MAX DIAMOND UNTUK KOMUNITAS</th>
                             <th>1st</th>
                             <th>2nd</th>
                             <th>3rd</th>
                             <th>4th</th>
                             <th>5th</th>
+                            <th>6th</th>
+                            <th>7th</th>
+                            <th>8th</th>
+                            <th>9th+</th>
+                            <th>Distribusi (Total)</th>
+                            <th>Distribusi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="event-type" rowspan="7">Tournament Battle Royale Squad (4 Players)</td>
-                            <td class="grade-column">SS</td>
-                            <td>144+ Tim</td>
-                            <td>36,000</td>
-                            <td>10000*</td>
-                            <td>10,000</td>
-                            <td>6,000</td>
-                            <td>4,000</td>
-                            <td>2,000</td>
-                            <td>2,000</td>
-                        </tr>
-                        <tr>
-                            <td class="grade-column">S</td>
-                            <td>120+ Tim</td>
-                            <td>23,600</td>
-                            <td>7200*</td>
-                            <td>6,000</td>
-                            <td>4,000</td>
-                            <td>2,400</td>
-                            <td>1,200</td>
-                            <td>1,200</td>
-                        </tr>
-                        <tr>
                             <td class="grade-column">A</td>
-                            <td>96+ Tim</td>
-                            <td>16,000</td>
-                            <td>4800*</td>
-                            <td>4,000</td>
-                            <td>2,400</td>
-                            <td>1,600</td>
-                            <td>800</td>
-                            <td>800</td>
+                            <td>48+ Team</td>
+                            <td>5400</td>
+                            <td>1500*</td>
+                            <td>1600</td>
+                            <td>1000</td>
+                            <td>600</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>-</td>
+                            <td>1200</td>
+                            <td>9th-20th</td>
                         </tr>
                         <tr>
                             <td class="grade-column">B</td>
-                            <td>72+ Tim</td>
-                            <td>9,000</td>
-                            <td>2400*</td>
-                            <td>2,400</td>
-                            <td>1,600</td>
-                            <td>1,000</td>
+                            <td>24+ Team</td>
+                            <td>3400</td>
+                            <td>900*</td>
+                            <td>1000</td>
+                            <td>600</td>
                             <td>400</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>-</td>
                             <td>400</td>
+                            <td>9th-12th</td>
                         </tr>
                         <tr>
                             <td class="grade-column">C</td>
-                            <td>48+ Tim</td>
-                            <td>5,400</td>
-                            <td>1500*</td>
-                            <td>1,600</td>
-                            <td>1,000</td>
-                            <td>600</td>
-                            <td>200</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td class="grade-column">D</td>
-                            <td>24+ Tim</td>
-                            <td>3,400</td>
-                            <td>900*</td>
-                            <td>1,000</td>
-                            <td>600</td>
-                            <td>400</td>
-                            <td>200</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td class="grade-column">E</td>
-                            <td>12+ Tim</td>
-                            <td>2,400</td>
+                            <td>12+ Team</td>
+                            <td>2400</td>
                             <td>600*</td>
                             <td>800</td>
                             <td>400</td>
                             <td>200</td>
                             <td>200</td>
                             <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>-</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="table-note">*Total diamond yang diberikan untuk komunitas tergantung dari jumlah panitia yang berkontribusi dalam acara tersebut</p>
             
-            <!-- Prize Pool Support Table -->
-            <h3 class="table-caption">Database Support Prize Pool (Online)</h3>
             <div class="table-scroll">
-                <table class="support-table">
+                <p class="table-caption">TOURNAMENT OFFLINE CLASH SQUAD (4 player)</p>
+                <table class="tournament-table">
                     <thead>
                         <tr>
-                            <th rowspan="2">EVENTS</th>
-                            <th colspan="2">Persyaratan Jumlah Partisipan</th>
-                            <th rowspan="2">Total Prize Pool</th>
-                            <th colspan="5">Distribusi Prize Pool (Rupiah)</th>
-                        </tr>
-                        <tr>
-                            <th>Grade</th>
-                            <th>Jumlah Tim/Pemain</th>
+                            <th class="grade-column">GRADE</th>
+                            <th>JUMLAH/TIM PEMAIN</th>
+                            <th>TOTAL SUPPORT DIAMOND</th>
+                            <th>MAX DIAMOND UNTUK KOMUNITAS</th>
                             <th>1st</th>
                             <th>2nd</th>
                             <th>3rd</th>
                             <th>4th</th>
                             <th>5th</th>
+                            <th>6th</th>
+                            <th>7th</th>
+                            <th>8th</th>
+                            <th>9th+</th>
+                            <th>Distribusi (Total)</th>
+                            <th>Distribusi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="event-type" rowspan="5">Tournament Battle Royale Squad (Online)</td>
-                            <td class="grade-column">S</td>
-                            <td>96+ Tim</td>
-                            <td>Rp 1,500,000</td>
-                            <td>Rp 500,000</td>
-                            <td>Rp 350,000</td>
-                            <td>Rp 250,000</td>
-                            <td>Rp 200,000</td>
-                            <td>Rp 200,000</td>
-                        </tr>
-                        <tr>
                             <td class="grade-column">A</td>
-                            <td>72+ Tim</td>
-                            <td>Rp 1,000,000</td>
-                            <td>Rp 350,000</td>
-                            <td>Rp 250,000</td>
-                            <td>Rp 200,000</td>
-                            <td>Rp 100,000</td>
-                            <td>Rp 100,000</td>
+                            <td>32+ Team</td>
+                            <td>5000</td>
+                            <td>1500*</td>
+                            <td>1600</td>
+                            <td>1000</td>
+                            <td>600</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>-</td>
+                            <td>800</td>
+                            <td>9th-16th</td>
                         </tr>
                         <tr>
                             <td class="grade-column">B</td>
-                            <td>48+ Tim</td>
-                            <td>Rp 750,000</td>
-                            <td>Rp 300,000</td>
-                            <td>Rp 200,000</td>
-                            <td>Rp 150,000</td>
-                            <td>Rp 50,000</td>
-                            <td>Rp 50,000</td>
+                            <td>16+ Team</td>
+                            <td>3000</td>
+                            <td>900*</td>
+                            <td>1000</td>
+                            <td>600</td>
+                            <td>400</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>-</td>
                         </tr>
                         <tr>
                             <td class="grade-column">C</td>
-                            <td>24+ Tim</td>
-                            <td>Rp 500,000</td>
-                            <td>Rp 200,000</td>
-                            <td>Rp 150,000</td>
-                            <td>Rp 100,000</td>
-                            <td>Rp 25,000</td>
-                            <td>Rp 25,000</td>
-                        </tr>
-                        <tr>
-                            <td class="grade-column">D</td>
-                            <td>12+ Tim</td>
-                            <td>Rp 300,000</td>
-                            <td>Rp 150,000</td>
-                            <td>Rp 100,000</td>
-                            <td>Rp 50,000</td>
+                            <td>8+ Team</td>
+                            <td>2480</td>
+                            <td>600*</td>
+                            <td>800</td>
+                            <td>400</td>
+                            <td>280</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>200</td>
                             <td>-</td>
+                            <td>0</td>
                             <td>-</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="table-note">Prize pool diberikan setelah laporan kegiatan lengkap diterima oleh tim komunitas</p>
+            
+            <div class="table-scroll">
+                <p class="table-caption">TOURNAMENT OFFLINE SOLO BR/CS</p>
+                <table class="tournament-table">
+                    <thead>
+                        <tr>
+                            <th class="grade-column">GRADE</th>
+                            <th>JUMLAH PEMAIN</th>
+                            <th>TOTAL SUPPORT DIAMOND</th>
+                            <th>MAX DIAMOND UNTUK KOMUNITAS</th>
+                            <th>1st</th>
+                            <th>2nd</th>
+                            <th>3rd</th>
+                            <th>4th</th>
+                            <th>5th</th>
+                            <th>6th</th>
+                            <th>7th</th>
+                            <th>8th</th>
+                            <th>9th+</th>
+                            <th>Distribusi (Total)</th>
+                            <th>Distribusi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="grade-column">A</td>
+                            <td>80+ Pemain</td>
+                            <td>1250</td>
+                            <td>1500*</td>
+                            <td>400</td>
+                            <td>250</td>
+                            <td>150</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>-</td>
+                            <td>200</td>
+                            <td>**</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-column">B</td>
+                            <td>40+ Pemain</td>
+                            <td>750</td>
+                            <td>900*</td>
+                            <td>250</td>
+                            <td>150</td>
+                            <td>100</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-column">C</td>
+                            <td>20+ Pemain</td>
+                            <td>620</td>
+                            <td>600*</td>
+                            <td>200</td>
+                            <td>100</td>
+                            <td>70</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>-</td>
+                            <td>0</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-scroll">
+                <p class="table-caption">NOBAR (NONTON BARENG)</p>
+                <table class="tournament-table">
+                    <thead>
+                        <tr>
+                            <th class="grade-column">GRADE</th>
+                            <th>JUMLAH PARTISIPAN</th>
+                            <th>SUPPORT DIAMOND</th>
+                            <th>MAX DIAMOND UNTUK PANITIA</th>
+                            <th colspan="10">KETERANGAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="grade-column">A</td>
+                            <td>100+ Penonton</td>
+                            <td>100/Partisipan</td>
+                            <td>3000*</td>
+                            <td colspan="10">Untuk doorprize dan kebutuhan acara</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-column">B</td>
+                            <td>50+ Partisipan</td>
+                            <td>50/Partisipan</td>
+                            <td>2000*</td>
+                            <td colspan="10">Untuk doorprize dan kebutuhan acara</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-column">C</td>
+                            <td>20+ Partisipan</td>
+                            <td>50/Partisipan</td>
+                            <td>1000*</td>
+                            <td colspan="10">Untuk doorprize dan kebutuhan acara</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-scroll">
+                <p class="table-caption">CLASSMEET</p>
+                <table class="tournament-table">
+                    <thead>
+                        <tr>
+                            <th>JUMLAH TEAM</th>
+                            <th>SUPPORT DIAMOND</th>
+                            <th>#1</th>
+                            <th>#2</th>
+                            <th>MAX DIAMOND PANITIA</th>
+                            <th>KETERANGAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1-8 Team</td>
+                            <td>800</td>
+                            <td>400</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                        <tr>
+                            <td>9-18 Team</td>
+                            <td>1200</td>
+                            <td>700</td>
+                            <td>300</td>
+                            <td>900</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                        <tr>
+                            <td>19-24 Team</td>
+                            <td>1600</td>
+                            <td>800</td>
+                            <td>250</td>
+                            <td>1000</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                        <tr>
+                            <td>25-33 Team</td>
+                            <td>2000</td>
+                            <td>800</td>
+                            <td>350</td>
+                            <td>1400</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                        <tr>
+                            <td>34-48 Team</td>
+                            <td>2500</td>
+                            <td>1200</td>
+                            <td>400</td>
+                            <td>2000</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                        <tr>
+                            <td>48+ Team</td>
+                            <td>3000</td>
+                            <td>1400</td>
+                            <td>400</td>
+                            <td>2400</td>
+                            <td>> Max 2 orang</td>
+                        </tr>
+                    </tbody>
+                </table>
+              
+            </div>
+            
+              <p class="table-note">Prize pool diberikan setelah laporan kegiatan lengkap diterima oleh tim komunitas</p>
             
             <div class="attention-box" style="background: rgba(255, 195, 15, 0.1); border-left: 4px solid var(--accent-color); padding: 20px; margin-top: 50px; border-radius: 5px;">
                 <h3 style="margin-bottom: 15px; color: var(--accent-color);"><i class="fas fa-exclamation-triangle"></i> PENTING!</h3>
                 <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.9);">Logo Komunitas FFDS, FFCA, Free Fire, dan info support diamond(bila event offline) <span class="warning-text">WAJIB</span> dimasukkan ke dalam poster acara. Kegagalan mencantumkan logo-logo tersebut dapat mengakibatkan penolakan dukungan untuk event Anda.</p>
             </div>
         </div>
-        
-     
-    
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-about">
-            <a href="/" class="footer-logo">
-                <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
-            </a>
-            <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
-            <div class="social-icons">
-                <a href="https://www.youtube.com/@Deliserdang1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://discord.gg/q7MD2hmY" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                <a href="https://www.instagram.com/ff.deliserdang/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="#" class="footer-logo">
+                    <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+                </a>
+                <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@Deliserdang1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://discord.gg/q7MD2hmY" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.instagram.com/ff.deliserdang/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
-        </div>
-        
-           <div class="footer-social">
-                <h3>Hubungi Kami</h3>
+            
+            <div class="footer-social">
+            <h3>Hubungi Kami</h3>
                 <p><i class="fas fa-envelope"></i> komunitasffdeliserdang@gmail.com</p>
                 <p><i class="fas fa-phone"></i>  083131861584</p>
                 <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara</p>
             </div>
-    </div>
-    
-    <div class="copyright">
-        &copy; 2025 Komunitas Free Fire Deli Serdang | All Rights Reserved
-    </div>
-</footer>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Komunitas Free Fire Deli Serdang. All Rights Reserved.</p>
+        </div>
+    </footer>
     <!-- JavaScript -->
     <script>
         // Toggle menu mobile
