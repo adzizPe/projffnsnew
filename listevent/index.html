@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOMUNITAS FREE FIRE DELI SERDANG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
         /* Google Fonts Import */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -206,7 +207,7 @@
             margin-bottom: 20px;
         }
 
-        /* Event Cards */
+        /* Event Cards - Modified to fix layout */
         .event-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -216,6 +217,7 @@
             gap: 20px;
         }
 
+        /* Event Card */
         .event-card {
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
@@ -236,8 +238,9 @@
 
         .event-banner {
             width: 100%;
-            height: 180px;
+            height: 220px;
             object-fit: cover;
+            object-position: center;
         }
 
         .event-content {
@@ -333,6 +336,7 @@
             text-transform: uppercase;
             transition: var(--transition);
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .btn-register:hover {
@@ -434,6 +438,143 @@
             font-size: 0.8rem;
             color: #888;
         }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--bg-dark);
+            margin: 10% auto;
+            padding: 25px;
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 25px rgba(255, 107, 8, 0.3);
+            position: relative;
+            animation: modalFadeIn 0.4s;
+        }
+
+        @keyframes modalFadeIn {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(255, 107, 8, 0.2);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 15px;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #ff8c3f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 107, 8, 0.3);
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            background-color: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 15px auto;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
 
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -446,111 +587,112 @@
             }
         }
 
-      /* Tablet improvements */
-@media (max-width: 768px) {
-  html {
-    font-size: 90%;
-  }
-  
-  /* Navbar adjustments for mobile */
-  .navbar {
-    flex-wrap: wrap;
-    padding: 0.5rem 3%;
-  }
-  
-  .navbar-logo img {
-    height: 30px;
-    margin-right: 23rem;
-  }
-  
-  .navbar-nav {
-    order: 3; /* Push nav below logo */
-    width: 100%;
-    margin-top: 0.1rem;
-    justify-content: center;
-  }
-  
-  .navbar-nav a {
-    font-size: 0.5rem;
-    margin: 0 0.2rem;
-    padding: 0.3rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.4rem;
-    width: auto;
-    margin-bottom: 1rem;
-    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
-  }
-  
-  .hero-description {
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-content {
-    max-width: 90%;
-    padding: 0 1rem;
-    margin-left: 20px;
-    margin-top: 2rem;
-  }
-  
-  .features-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-about {
-    grid-column: span 1;
-  }
-  
-  .footer {
-    padding-bottom: 5rem;
-  }
-  
-  /* Social sidebar adjustment */
-  .social-sidebar {
-    flex-direction: row;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    background-color: rgba(10, 17, 40, 0.9);
-    justify-content: space-around;
-    padding: 10px 0;
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    position: fixed;
-  }
+        /* Tablet improvements */
+        @media (max-width: 768px) {
+            html {
+                font-size: 90%;
+            }
+              .modal-content {
+                margin: 15% auto;
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .event-banner {
+                height: 300px;
+            }
+            
+            /* Navbar adjustments for mobile */
+            .navbar {
+                flex-wrap: wrap;
+                padding: 0.5rem 3%;
+            }
+            
+            .navbar-logo img {
+                height: 30px;
+                margin-right: 23rem;
+            }
+            
+            .navbar-nav {
+                order: 3; /* Push nav below logo */
+                width: 100%;
+                margin-top: 0.1rem;
+                justify-content: center;
+            }
+            
+            .navbar-nav a {
+                font-size: 0.5rem;
+                margin: 0 0.2rem;
+                padding: 0.3rem;
+            }
+            
+            .event-banner {
+                height: 300px; /* Improved height for better visibility */
+                object-fit: contain; /* Changed to contain to show full image */
+                background-color: #000; /* Dark background for image containment */
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-about {
+                grid-column: span 1;
+            }
+            
+            .footer {
+                padding-bottom: 5rem;
+            }
+            
+            /* Social sidebar adjustment */
+            .social-sidebar {
+                flex-direction: row;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                background-color: rgba(10, 17, 40, 0.9);
+                justify-content: space-around;
+                padding: 10px 0;
+                backdrop-filter: blur(8px);
+                z-index: 1000;
+                position: fixed;
+            }
 
-  .social-sidebar a {
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    border-radius: 50%;
-  }
-  
-  .social-sidebar a:hover {
-    width: 40px;
-    transform: translateY(-5px);
-  }
-}
+            .social-sidebar a {
+                width: 40px;
+                height: 40px;
+                margin: 0;
+                border-radius: 50%;
+            }
+            
+            .social-sidebar a:hover {
+                width: 40px;
+                transform: translateY(-5px);
+            }
+        }
 
         @media (max-width: 576px) {
             .footer-container {
                 grid-template-columns: 1fr;
             }
+          
             
-            .events-title {
-                font-size: 2rem;
+            .event-banner {
+                height: 240px; /* Adjusted height for mobile */
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+            }
+            
+            .event-title {
+                font-size: 1.3rem;
+            }
+            
+            .event-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -570,7 +712,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <a href="/" class="navbar-logo">
-            <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+            <img src="/assets/logoffds.png "alt="FF Deli Serdang Logo">
         </a>
   
         <div class="navbar-nav">
@@ -596,7 +738,7 @@
         </div>
 
         <div class="event-container">
-            <!-- Event Card 1 -->
+            <!-- Event Card 1 - FFNS 2025 Fall City Qualifier -->
             <div class="event-card">
                 <img src="/assets/ffnscqds.jpg" alt="FFNS 2025 Fall City Qualifier" class="event-banner">
                 <div class="event-content">
@@ -652,7 +794,8 @@
                             <h3>CP: 083131861584 (Dr.Az)</h3>
                         </div>
                         
-                        <a href="https://ff.garena.co.id/ffns2025fall-deli-serdang" class="btn-register">Daftar</a>
+                        <!-- Changed to direct link to form -->
+                        <a href="https://ff.garena.co.id/ffns2025fall-deli-serdang" class="btn-register" target="_blank">Daftar</a>
                     </div>
                     
                     <div class="event-hashtags">
@@ -663,147 +806,61 @@
                 </div>
             </div>
             
-            <!-- Example of additional event card -->
-            <!-- <div class="event-card">
-                <img src="/assets/ffnscqds.jpg" alt="Tournament Example" class="event-banner">
-                <div class="event-content">
-                    <h2 class="event-title">Tournament Example</h2>
-                    <p class="event-description">
-                        Contoh event turnamen lain yang bisa ditambahkan ke dalam layout baru yang lebih kompak.
-                    </p>
-                    
-                    <div class="event-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Matchday</h4>
-                                <p>25 MEI 2025</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Lokasi</h4>
-                                <p>Lubuk Pakam</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Biaya</h4>
-                                <p>Rp 50.000</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Hadiah</h4>
-                                <p>Rp 1.000.000</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="event-cta">
-                        <div class="highlight-box">
-                            <h3>CP: 083131861584</h3>
-                        </div>
-                        
-                        <a href="#" class="btn-register">Daftar</a>
-                    </div>
-                    
-                    <div class="event-hashtags">
-                        <span class="event-hashtag">#freefire</span>
-                        <span class="event-hashtag">#tournament</span>
-                    </div>
-                </div>
-            </div> -->
+            <!-- Event Card 2 - Community Tournament (moved inside the main event-container) -->
+          <div class="event-card">
+        <img src="/assets/freefire.webp" alt="Tournament Poster" class="event-banner">
+        <div class="event-content">
+            <h2 class="event-title">DAFTAR EVENT TURNAMEN KOMUNITAS</h2>
+            <p class="event-subtitle">CR BERHADIAH SOLO</p>
             
-            <!-- You can add more event cards here -->
-            <!-- <div class="event-card">
-                <img src="/assets/ffnscqds.jpg" alt="Tournament Example 2" class="event-banner">
-                <div class="event-content">
-                    <h2 class="event-title">Tournament Example 2</h2>
-                    <p class="event-description">
-                        Contoh event turnamen ketiga yang bisa ditambahkan ke dalam layout baru yang lebih kompak.
-                    </p>
-                    
-                    <div class="event-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Matchday</h4>
-                                <p>1 JUNI 2025</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Lokasi</h4>
-                                <p>Deli Serdang</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Biaya</h4>
-                                <p>Rp 45.000</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Hadiah</h4>
-                                <p>Rp 950.000</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="event-cta">
-                        <div class="highlight-box">
-                            <h3>CP: 083131861584</h3>
-                        </div>
-                        
-                        <a href="#" class="btn-register">Daftar</a>
-                    </div>
-                    
-                    <div class="event-hashtags">
-                        <span class="event-hashtag">#freefire</span>
-                        <span class="event-hashtag">#ffdeliserdang</span>
-                    </div>
-                </div>
+            <div class="event-cta" style="margin-top: auto;">
+                <!-- The key change is here - added id to the button and made it a proper button element -->
+                <button class="btn-register" id="showModalBtn">Daftar</button>
             </div>
-        </div> -->
+        </div>
+    </div>
+
+    <!-- Registration Modal remains the same -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">ISI Formulir Daftar</h2>
+            
+            <div class="spinner" id="loadingSpinner"></div>
+            <div class="success-message" id="successMessage">Pendaftaran berhasil! Terima kasih telah mendaftar.</div>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Nama Lengkap</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nickname">Nickname Ingame</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="uid">UID Ingame</label>
+                    <input type="number" id="uid" name="uid" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp">No. WhatsApp</label>
+                    <input type="text" id="whatsapp" name="whatsapp" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Daftar</button>
+            </form>
+        </div>
+    </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-about">
-                <a href="/" class="footer-logo">
-                    <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
-                </a>
+                <a href="/" class="footer-logo"><img src="/assets/logoffds.png" alt="FF Deli Serdang Logo"></a>
                 <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
                 <div class="social-icons">
                     <a href="https://www.youtube.com/@Deliserdang1"><i class="fab fa-youtube"></i></a>
@@ -811,82 +868,123 @@
                     <a href="https://www.instagram.com/ff.deliserdang/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-
-            <div class="footer-social">
+            
+          <div class="footer-social">
                 <h3>Hubungi Kami</h3>
-                <p><i class="fas fa-envelope"></i> komunitasffdeliserdang@gmail.com</p>
-                <p><i class="fas fa-phone"></i>  083131861584</p>
-                <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara</p>
+                <p><i class="fas fa-envelope"></i>komunitasffdeliserdang@gmail.com</p>
+                <p><i class="fas fa-phone"></i>083131861584</p>
+                <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara, Indonesia</p>
             </div>
         </div>
-
+        
         <div class="copyright">
-            <p>&copy; 2025 Komunitas Free Fire Deli Serdang. All Rights Reserved.</p>
+            <p>&copy; 2025 Komunitas Free Fire Deli Serdang. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Toggle menu mobile
-        const menuButton = document.querySelector('#menu');
-        const navbarNav = document.querySelector('.navbar-nav');
-
-        menuButton.addEventListener('click', function() {
-            navbarNav.classList.toggle('active');
+   <script>
+    
+     
+    // Fixed JavaScript for event card and form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image display code remains the same
+        const eventBanners = document.querySelectorAll('.event-banner');
+        eventBanners.forEach(banner => {
+            banner.style.objectFit = 'contain';
+            banner.style.backgroundColor = '#000';
+            banner.style.padding = '10px';
         });
-
-        // Menutup menu ketika mengklik di luar menu
-        document.addEventListener('click', function(e) {
-            if(!menuButton.contains(e.target) && !navbarNav.contains(e.target)) {
-                navbarNav.classList.remove('active');
+        
+        // Get DOM elements
+        const showModalBtn = document.getElementById('showModalBtn');
+        const modal = document.getElementById('registrationModal');
+        const closeBtn = document.querySelector('.close');
+        const form = document.getElementById('registrationForm');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successMessage = document.getElementById('successMessage');
+        
+        // Open modal when clicking the button
+        showModalBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+        
+        // Close modal when clicking the close button
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            // Reset form and messages
+            form.reset();
+            successMessage.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                // Reset form and messages
+                form.reset();
+                successMessage.style.display = 'none';
             }
         });
-
-        // Animated Background
-        function createParticle() {
-            const animatedBg = document.querySelector('.animated-bg');
-            const particle = document.createElement('div');
+        
+        // Form submission handler with compatibility fixes
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Style untuk particle
-            particle.style.position = 'absolute';
-            particle.style.width = Math.random() * 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.background = 'rgba(255, 255, 255, 0.4)';
-            particle.style.borderRadius = '50%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.opacity = Math.random() * 0.4;
-            particle.style.animation = `moveParticle ${Math.random() * 8 + 5}s linear infinite`;
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
             
-            // Tambahkan particle ke background
-            animatedBg.appendChild(particle);
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                nickname: document.getElementById('nickname').value,
+                uid: document.getElementById('uid').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                timestamp: new Date().toISOString()
+            };
             
-            // Hapus particle setelah animasi berakhir
-            setTimeout(() => {
-                particle.remove();
-            }, 13000);
-        }
-
-        // Create initial particles
-        for (let i = 0; i < 40; i++) {
-            setTimeout(createParticle, i * 100);
-        }
-
-        // Create new particles periodically
-        setInterval(createParticle, 300);
-
-        // Keyframes untuk animasi particle
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes moveParticle {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                }
-                100% {
-                    transform: translateY(-1000px) rotate(360deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+            console.log("Submitting form data:", formData);
+            
+            // UPDATED: The script URL for your Google Apps Script Web App
+            // PENTING: Ganti URL ini dengan URL deployment terbaru Web App Anda
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyF8jGwf4Qt_iUGLOGqv2-Ee5MxvuNI-AV7UWPmjQMjQPtNw3cJ_MWfcumsX4HRnRrX6A/exec';
+            
+            // Method 1: Use formData directly with URL parameters
+            let url = scriptURL + '?';
+            url += 'fullName=' + encodeURIComponent(formData.fullName);
+            url += '&nickname=' + encodeURIComponent(formData.nickname);
+            url += '&uid=' + encodeURIComponent(formData.uid);
+            url += '&whatsapp=' + encodeURIComponent(formData.whatsapp);
+            url += '&timestamp=' + encodeURIComponent(formData.timestamp);
+            
+            // Create a hidden iframe for form submission
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            // When iframe loads, show success and remove iframe
+            iframe.onload = function() {
+                loadingSpinner.style.display = 'none';
+                successMessage.style.display = 'block';
+                form.reset();
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    modal.style.display = 'none';
+                    document.body.removeChild(iframe);
+                }, 3000);
+            };
+            
+            // Handle errors
+            iframe.onerror = function() {
+                loadingSpinner.style.display = 'none';
+                alert('Terjadi kesalahan saat mengirim data. Silakan coba lagi nanti.');
+                document.body.removeChild(iframe);
+            };
+            
+            // Set iframe source to the URL with parameters
+            iframe.src = url;
+        });
+    });
     </script>
-</body>
-</html>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </body>
+    </html>
