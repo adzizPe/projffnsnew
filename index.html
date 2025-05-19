@@ -189,197 +189,265 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4262074946165093"
      crossorigin="anonymous"></script>
      <script>
-         document.addEventListener("DOMContentLoaded", function() {
-            // Elements
-            const chatButton = document.getElementById("chatButton");
-            const chatWindow = document.getElementById("chatWindow");
-            const closeChat = document.getElementById("closeChat");
-            const chatMessages = document.getElementById("chatMessages");
-            const chatInput = document.getElementById("chatInput");
-            const sendButton = document.getElementById("sendButton");
-            const typingIndicator = document.getElementById("typingIndicator");
+     
+        // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Get necessary elements
+    const chatButton = document.getElementById('chatButton');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendButton = document.getElementById('sendButton');
+    const chatMessages = document.getElementById('chatMessages');
+    const typingIndicator = document.getElementById('typingIndicator');
+    
+    // Comprehensive knowledge base for the AI assistant
+    const knowledgeBase = {
+        // Komunitas Information
+        "komunitas": "Komunitas Free Fire Deli Serdang atau FFDS berdiri sejak 20 Maret 2023, diketahui oleh admin FF Community ID part of Garena Free Fire Indonesia. Komunitas ini juga sudah bergabung ke dalam Komunitas Free Fire Indonesia, wadah nya para Komunitas free fire yang ada di seluruh indonesia.",
+        "sejarah": "Komunitas Free Fire Deli Serdang didirikan pada 20 Maret 2023. Komunitas ini berhasil didirikan saat pendirinya menjadi Volunteer di event anniversary FF 5th di Carrefour Medan Fair.",
+        "tentang": "Komunitas Free Fire Deli Serdang adalah komunitas resmi game Free Fire di wilayah Deli Serdang yang diakui oleh Garena Free Fire Indonesia. Komunitas ini menjadi wadah bagi para pemain Free Fire untuk berkumpul, berbagi, dan mengikuti berbagai turnamen.",
+        "tujuan": "Tujuan Komunitas FFDS adalah menjadi wadah bagi para pemain Free Fire di wilayah Deli Serdang untuk berkumpul, berbagi pengalaman, dan mengikuti berbagai event resmi.",
+        
+        // Founder Information
+        "pendiri": "Pendiri komunitas ini adalah Muhammad Azra, atau dikenal para gamers free fire di Sumatera Utara dengan sebutan Dr.Az. Beliau seorang Event Organizer yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang.",
+        "dr.az": "Dr.Az adalah nama panggilan untuk Muhammad Azra, pendiri Komunitas Free Fire Deli Serdang. Beliau sukses mendirikan komunitas ini setelah 3 tahun menjadi Event Organizer turnamen Free Fire.",
+        "azra": "Muhammad Azra atau Dr.Az adalah pendiri Komunitas FFDS yang sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary FF 5th di Carrefour Medan Fair.",
+        
+        // Events Information
+        "event": "Kami mengadakan berbagai event Free Fire di area Deli Serdang, termasuk turnamen online dan offline. Event terbaru kami adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada 18 Mei 2025.",
+        "daftar event": "Untuk melihat daftar event terbaru, silakan kunjungi halaman 'List Event' pada menu website kami.",
+        "turnamen": "Event terbaru kami adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada 18 Mei 2025. Turnamen ini merupakan kualifikasi offline untuk Nusantara Series 2025.",
+        "nusantara series": "Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER akan diadakan pada 18 Mei 2025 di Deli Serdang.",
+        "jadwal": "Event terbaru kami adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada 18 Mei 2025. Untuk jadwal event lainnya, silakan kunjungi halaman 'List Event'.",
+        
+        // Community Features
+        "daftar": "Untuk mendaftarkan event Anda, kunjungi halaman 'Daftarkan' pada menu website kami. Tim kami akan meninjau dan memberikan dukungan untuk menyukseskan event Anda.",
+        "official support": "Buat event Free Fire Anda sendiri dan dapatkan dukungan resmi dari komunitas kami untuk menyukseskan event tersebut dengan jangkauan yang lebih luas.",
+        "dukungan": "Komunitas FFDS memberikan dukungan resmi untuk event-event Free Fire di wilayah Deli Serdang, termasuk publikasi, pencarian sponsor, dan bantuan teknis.",
+        "leaderboard": "Untuk melihat peringkat pemain terbaik, silakan kunjungi halaman 'Leaderboard' pada menu website kami.",
+        "galeri": "Untuk melihat foto-foto kegiatan komunitas, silakan kunjungi halaman 'Galery' pada menu website kami.",
+        "store": "Untuk membeli merchandise resmi komunitas, silakan kunjungi halaman 'STORE' pada menu website kami.",
+        
+        // Contact Information
+        "kontak": "Hubungi kami melalui email komunitasffdeliserdang@gmail.com atau telepon 083131861584.",
+        "email": "Email resmi komunitas: komunitasffdeliserdang@gmail.com",
+        "telepon": "Nomor kontak komunitas: 083131861584",
+        "lokasi": "Komunitas kami berada di Deli Serdang, Sumatera Utara, Indonesia.",
+        "alamat": "Komunitas Free Fire Deli Serdang beralamat di Deli Serdang, Sumatera Utara, Indonesia.",
+        
+        // Social Media
+        "sosial media": "Ikuti kami di YouTube @Deliserdang1, Discord https://discord.gg/q7MD2hmY, dan Instagram @ff.deliserdang.",
+        "youtube": "Channel YouTube resmi kami adalah @Deliserdang1. Silakan subscribe untuk mendapatkan update terbaru.",
+        "discord": "Server Discord resmi kami: https://discord.gg/q7MD2hmY. Bergabunglah untuk diskusi dan update langsung.",
+        "instagram": "Akun Instagram resmi kami: @ff.deliserdang. Follow untuk melihat konten dan informasi terbaru.",
+        "whatsapp": "Gabung dengan saluran WhatsApp resmi kami untuk mendapatkan informasi terbaru tentang komunitas dan event.",
+        
+        // Joining Information
+        "bergabung": "Anda dapat bergabung melalui Discord kami di https://discord.gg/q7MD2hmY atau saluran WhatsApp komunitas.",
+        "gabung": "Untuk bergabung dengan komunitas FFDS, silakan join Discord kami di https://discord.gg/q7MD2hmY atau saluran WhatsApp di https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T",
+        "join": "Untuk bergabung, silakan kunjungi Discord kami https://discord.gg/q7MD2hmY atau saluran WhatsApp komunitas.",
+        "anggota": "Untuk menjadi anggota resmi, silakan bergabung melalui Discord atau saluran WhatsApp kami. Tidak ada biaya pendaftaran.",
+        
+        // Garena Free Fire Information
+        "free fire": "Free Fire adalah game battle royale seluler yang dikembangkan dan diterbitkan oleh Garena. Game ini memungkinkan hingga 50 pemain terjun ke pulau terpencil dan bertarung untuk menjadi yang terakhir bertahan. Free Fire terkenal dengan gameplay cepat dan karakter dengan kemampuan khusus.",
+        "garena": "Garena adalah pengembang dan penerbit game Free Fire. Mereka secara rutin mengadakan turnamen esports di berbagai level, dari komunitas lokal hingga kejuaraan dunia.",
+        "game": "Free Fire adalah game battle royale seluler populer di mana 50 pemain berjuang untuk bertahan hidup di sebuah pulau dengan durasi 10 menit per pertandingan. Game ini memiliki berbagai karakter dengan kemampuan unik.",
+        "battle royale": "Battle Royale adalah genre game di mana banyak pemain bertarung hingga tersisa satu pemain atau tim. Free Fire adalah game battle royale seluler populer dengan 50 pemain per match.",
+        "karakter": "Free Fire memiliki berbagai karakter dengan kemampuan khusus yang dapat membantu gameplay, seperti Alok, K, Chrono, dan lainnya. Setiap karakter memiliki skill pasif atau aktif yang unik.",
+        "pet": "Free Fire memiliki sistem pet yang memberikan bonus tambahan kepada pemain. Pet seperti Falco, Ottero, dan Robo memiliki kemampuan yang dapat membantu dalam pertempuran.",
+        "update": "Free Fire secara rutin menerima update dengan konten baru, termasuk karakter, senjata, dan mode permainan. Update besar biasanya diluncurkan setiap beberapa bulan.",
+        "turnamen ff": "Free Fire memiliki berbagai level turnamen, mulai dari komunitas lokal hingga World Series dengan hadiah milyaran rupiah.",
+        "senjata": "Free Fire memiliki berbagai senjata, termasuk pistol, shotgun, SMG, AR, sniper, dan senjata jarak dekat. Setiap senjata memiliki karakteristik dan situasi penggunaan yang berbeda.",
+        
+        // Promotions
+        "promosi": "Ingin mempromosikan brand Anda melalui komunitas kami? Hubungi kami di komunitasffdeliserdang@gmail.com untuk diskusi lebih lanjut.",
+        "sponsor": "Komunitas FFDS terbuka untuk kerjasama sponsor. Hubungi kami di komunitasffdeliserdang@gmail.com untuk informasi lebih lanjut.",
+        "kerjasama": "Untuk diskusi kerjasama atau sponsorship, silakan hubungi kami melalui email resmi komunitas."
+    };
+    
+    // Default responses when no match is found
+    const defaultResponses = [
+        "Maaf, saya tidak mengerti pertanyaan Anda. Coba tanyakan tentang komunitas FFDS, event, atau cara bergabung.",
+        "Pertanyaan Anda di luar pengetahuan saya. Coba tanyakan tentang Komunitas Free Fire Deli Serdang.",
+        "Saya tidak memiliki informasi tentang hal tersebut. Bagaimana jika Anda bertanya tentang event atau turnamen kami?",
+        "Informasi tersebut tidak tersedia. Tanyakan tentang cara bergabung atau event mendatang."
+    ];
+    
+    // Greeting messages
+    const greetings = [
+        "Halo! Ada yang bisa saya bantu tentang Komunitas Free Fire Deli Serdang?",
+        "Selamat datang di FFDS! Apa yang ingin Anda ketahui?",
+        "Halo, saya asisten FFDS. Tanyakan tentang komunitas atau event kami!"
+    ];
+    
+    // Open chat window
+    chatButton.addEventListener('click', function() {
+        chatWindow.classList.add('active');
+        
+        // Add greeting message if it's the first time opening
+        if (chatMessages.children.length === 0) {
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            addBotMessage(randomGreeting);
+        }
+    });
+    
+    // Close chat window
+    closeChat.addEventListener('click', function() {
+        chatWindow.classList.remove('active');
+    });
+    
+    // Send message on button click
+    sendButton.addEventListener('click', sendMessage);
+    
+    // Send message on Enter key press
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    // Send message function
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        
+        if (message !== '') {
+            // Add user message to chat
+            addUserMessage(message);
             
-            // Knowledge base for the AI assistant
-            const knowledgeBase = {
-                // General information
-                "komunitas": "Komunitas Free Fire Deli Serdang (FFDS) adalah komunitas resmi game Free Fire yang berlokasi di Deli Serdang, Sumatera Utara. Komunitas ini berdiri sejak 20 Maret 2023 dan sudah diakui oleh admin FF Community ID dan Garena Free Fire Indonesia.",
-                "pendiri": "Pendiri Komunitas Free Fire Deli Serdang adalah Muhammad Azra atau yang dikenal sebagai Dr.Az. Beliau adalah seorang Event Organizer (EO) yang telah membuat event turnamen Free Fire sejak 2020.",
-                "kontak": "Anda dapat menghubungi Komunitas FFDS melalui email: komunitasffdeliserdang@gmail.com atau telepon: 083131861584",
-                "lokasi": "Komunitas FFDS berlokasi di Deli Serdang, Sumatera Utara, Indonesia.",
-                
-                // Events information
-                "event": "Komunitas FFDS sering mengadakan berbagai event Free Fire. Event yang akan datang adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada tanggal 18 Mei 2025.",
-                "daftar event": "Untuk mendaftarkan event Anda, silakan klik menu 'Daftarkan' di navigasi website atau hubungi admin melalui WhatsApp.",
-                "jadwal": "Jadwal event terbaru kami adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada tanggal 18 Mei 2025.",
-                
-                // Social Media
-                "media sosial": "Anda dapat mengikuti kami di: YouTube (@Deliserdang1), Discord (https://discord.gg/q7MD2hmY), dan Instagram (@ff.deliserdang)",
-                "youtube": "Channel YouTube kami adalah @Deliserdang1",
-                "discord": "Server Discord kami dapat diakses melalui link: https://discord.gg/q7MD2hmY",
-                "instagram": "Akun Instagram kami adalah @ff.deliserdang",
-                
-                // Joining the community
-                "gabung": "Untuk bergabung dengan Komunitas FFDS, Anda dapat join Discord kami di https://discord.gg/q7MD2hmY atau ikuti saluran WhatsApp kami.",
-                "whatsapp": "Anda dapat bergabung dengan saluran WhatsApp Komunitas FFDS melalui link: https://whatsapp.com/channel/0029VabyQIVDuMRlSNBv882T",
-                
-                // Tournament and events
-                "turnamen": "Komunitas FFDS sering mengadakan turnamen Free Fire. Event terdekat adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER pada 18 Mei 2025.",
-                "hadiah": "Hadiah untuk turnamen bervariasi tergantung pada jenis event. Untuk informasi detail tentang hadiah event tertentu, silakan lihat halaman 'List Event'.",
-                
-                // Store and merchandise
-                "store": "Kami memiliki merchandise resmi Komunitas FFDS. Untuk melihat dan membeli merchandise, silakan kunjungi halaman 'STORE' di website kami.",
-                
-                // Help commands
-                "bantuan": "Saya adalah AI Assistant Komunitas FFDS. Saya dapat membantu Anda dengan informasi tentang komunitas, event, cara bergabung, media sosial, dan lainnya. Silakan tanyakan apa yang ingin Anda ketahui!",
-                "perintah": "Beberapa pertanyaan yang bisa Anda ajukan: 'Apa itu Komunitas FFDS?', 'Bagaimana cara bergabung?', 'Event apa yang akan datang?', 'Bagaimana cara daftar turnamen?', 'Siapa pendiri komunitas ini?', dan lainnya.",
-            };
+            // Clear input
+            chatInput.value = '';
             
-            // Default welcome message
-            const welcomeMessage = "Halo! Saya adalah AI Assistant Komunitas Free Fire Deli Serdang. Ada yang bisa saya bantu tentang event, turnamen, atau informasi komunitas?";
+            // Show typing indicator
+            showTypingIndicator();
             
-            // Function to toggle chat window
-            chatButton.addEventListener("click", function() {
-                chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "flex" : "none";
-                
-                // Show welcome message if this is first open
-                if (chatMessages.children.length === 0) {
-                    addBotMessage(welcomeMessage);
-                }
-            });
-            
-            // Close chat window
-            closeChat.addEventListener("click", function() {
-                chatWindow.style.display = "none";
-            });
-            
-            // Send message on button click
-            sendButton.addEventListener("click", sendMessage);
-            
-            // Send message on Enter key
-            chatInput.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    sendMessage();
-                }
-            });
-            
-            // Function to send message
-            function sendMessage() {
-                const message = chatInput.value.trim();
-                if (message) {
-                    // Add user message to chat
-                    addUserMessage(message);
-                    
-                    // Clear input
-                    chatInput.value = "";
-                    
-                    // Show typing indicator
-                    typingIndicator.style.display = "flex";
-                    
-                    // Process message and get response after delay
-                    setTimeout(() => {
-                        typingIndicator.style.display = "none";
-                        const response = getAIResponse(message);
-                        addBotMessage(response);
-                    }, 1000);
-                }
+            // Process and respond after a short delay (to simulate thinking)
+            setTimeout(() => {
+                const response = getAIResponse(message);
+                hideTypingIndicator();
+                addBotMessage(response);
+            }, 1000);
+        }
+    }
+    
+    // Add user message to chat
+    function addUserMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message user-message';
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        scrollToBottom();
+    }
+    
+    // Add bot message to chat
+    function addBotMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message bot-message';
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        scrollToBottom();
+    }
+    
+    // Show typing indicator
+    function showTypingIndicator() {
+        typingIndicator.style.display = 'flex';
+        scrollToBottom();
+    }
+    
+    // Hide typing indicator
+    function hideTypingIndicator() {
+        typingIndicator.style.display = 'none';
+    }
+    
+    // Scroll to bottom of chat messages
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Get AI response based on user input
+    function getAIResponse(userInput) {
+        userInput = userInput.toLowerCase();
+        
+        // Check for greetings
+        if (userInput.includes('halo') || userInput.includes('hai') || userInput.includes('hello')) {
+            return greetings[Math.floor(Math.random() * greetings.length)];
+        }
+        
+        // Check for common questions
+        for (const [key, value] of Object.entries(knowledgeBase)) {
+            if (userInput.includes(key)) {
+                return value;
             }
-            
-            // Function to add user message to chat
-            function addUserMessage(message) {
-                const messageElement = document.createElement("div");
-                messageElement.classList.add("message", "user-message");
-                messageElement.textContent = message;
-                chatMessages.appendChild(messageElement);
-                scrollToBottom();
-            }
-            
-            // Function to add bot message to chat
-            function addBotMessage(message) {
-                const messageElement = document.createElement("div");
-                messageElement.classList.add("message", "bot-message");
-                messageElement.textContent = message;
-                chatMessages.appendChild(messageElement);
-                scrollToBottom();
-            }
-            
-            // Function to scroll chat to bottom
-            function scrollToBottom() {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-            
-            // Function to get AI response
-            function getAIResponse(userMessage) {
-                const message = userMessage.toLowerCase();
-                
-                // Check for specific keywords in message
-                if (message.includes("halo") || message.includes("hai") || message.includes("hi") || message.includes("selamat")) {
-                    return "Halo! Selamat datang di Komunitas Free Fire Deli Serdang. Ada yang bisa saya bantu?";
-                }
-                else if (message.includes("terima kasih") || message.includes("makasih")) {
-                    return "Sama-sama! Senang bisa membantu Anda. Ada hal lain yang ingin ditanyakan?";
-                }
-                else if (message.includes("bantuan") || message.includes("help") || message.includes("bisa bantu")) {
-                    return knowledgeBase["bantuan"] + "\n\n" + knowledgeBase["perintah"];
-                }
-                else if (message.includes("komunitas") || message.includes("ffds") || message.includes("apa itu")) {
-                    return knowledgeBase["komunitas"];
-                }
-                else if (message.includes("pendiri") || message.includes("founder") || message.includes("siapa yang")) {
-                    return knowledgeBase["pendiri"];
-                }
-                else if (message.includes("kontak") || message.includes("hubungi") || message.includes("email") || message.includes("telpon") || message.includes("telepon")) {
-                    return knowledgeBase["kontak"];
-                }
-                else if (message.includes("lokasi") || message.includes("dimana") || message.includes("alamat")) {
-                    return knowledgeBase["lokasi"];
-                }
-                else if (message.includes("event") || message.includes("acara") || message.includes("kegiatan")) {
-                    return knowledgeBase["event"];
-                }
-                else if (message.includes("daftar") && (message.includes("event") || message.includes("turnamen") || message.includes("acara"))) {
-                    return knowledgeBase["daftar event"];
-                }
-                else if (message.includes("jadwal") || message.includes("kapan")) {
-                    return knowledgeBase["jadwal"];
-                }
-                else if (message.includes("media sosial") || message.includes("sosmed")) {
-                    return knowledgeBase["media sosial"];
-                }
-                else if (message.includes("youtube") || message.includes("channel")) {
-                    return knowledgeBase["youtube"];
-                }
-                else if (message.includes("discord") || message.includes("server")) {
-                    return knowledgeBase["discord"];
-                }
-                else if (message.includes("instagram") || message.includes("ig") || message.includes("insta")) {
-                    return knowledgeBase["instagram"];
-                }
-                else if (message.includes("gabung") || message.includes("ikut") || message.includes("jadi anggota") || message.includes("join")) {
-                    return knowledgeBase["gabung"];
-                }
-                else if (message.includes("whatsapp") || message.includes("wa") || message.includes("grup")) {
-                    return knowledgeBase["whatsapp"];
-                }
-                else if (message.includes("turnamen") || message.includes("lomba") || message.includes("kompetisi")) {
-                    return knowledgeBase["turnamen"];
-                }
-                else if (message.includes("hadiah") || message.includes("prize") || message.includes("reward")) {
-                    return knowledgeBase["hadiah"];
-                }
-                else if (message.includes("store") || message.includes("merchandise") || message.includes("toko") || message.includes("beli")) {
-                    return knowledgeBase["store"];
-                }
-                else if (message.includes("nusantara") || message.includes("series") || message.includes("18 mei")) {
-                    return "Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER akan diselenggarakan pada 18 Mei 2025 di Deli Serdang. Event ini merupakan event penting bagi para pemain Free Fire di daerah Deli Serdang dan sekitarnya. Untuk informasi lebih lanjut dan pendaftaran, silakan kunjungi halaman 'List Event'.";
-                }
-                else if (message.includes("offline") || message.includes("qualifier")) {
-                    return "Event OFFLINE QUALIFIER adalah tahap kualifikasi turnamen yang diadakan secara tatap muka. Event ini memberikan kesempatan kepada tim-tim untuk berkompetisi dan mendapatkan slot untuk tahap selanjutnya. Event OFFLINE QUALIFIER terdekat kami adalah Free Fire Nusantara Series 2025 Fall - Deli Serdang pada 18 Mei 2025.";
-                }
-                else {
-                    return "Maaf, saya tidak memiliki informasi spesifik tentang hal itu. Silakan tanyakan tentang komunitas kami, event yang akan datang, cara bergabung, atau kunjungi halaman 'Informasi' untuk detail lebih lanjut.";
-                }
-            }
-        });
+        }
+        
+        // Check for specific keywords
+        if (userInput.includes('ffds')) {
+            return knowledgeBase['komunitas'];
+        }
+        
+        if (userInput.includes('azra') || userInput.includes('dr.az')) {
+            return knowledgeBase['pendiri'];
+        }
+        
+        if (userInput.includes('youtube') || userInput.includes('instagram') || userInput.includes('discord')) {
+            return knowledgeBase['sosial media'];
+        }
+        
+        if (userInput.includes('nusantara') || userInput.includes('series')) {
+            return "Free Fire Nusantara Series 2025 Fall - Deli Serdang OFFLINE QUALIFIER akan diadakan pada 18 Mei 2025 di Deli Serdang.";
+        }
+        
+        if (userInput.includes('email') || userInput.includes('telepon') || userInput.includes('hubungi')) {
+            return knowledgeBase['kontak'];
+        }
+        
+        if (userInput.includes('terima kasih') || userInput.includes('makasih')) {
+            return "Sama-sama! Ada hal lain yang ingin Anda ketahui tentang FFDS?";
+        }
+        
+        // Return a default response if no match is found
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+});
+
+// Add floating icons for animated background
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedBg = document.querySelector('.animated-bg');
+    const iconCount = 15; // Number of floating icons
+    
+    // Add icons
+    for (let i = 0; i < iconCount; i++) {
+        createFloatingIcon(animatedBg);
+    }
+    
+    // Create a floating icon
+    function createFloatingIcon(container) {
+        const img = document.createElement('img');
+        img.src = 'assets/logoffds.png'; // Use your logo as floating icon
+        img.style.left = `${Math.random() * 100}%`;
+        img.style.animationDuration = `${15 + Math.random() * 10}s`; // Random duration
+        img.style.animationDelay = `${Math.random() * 5}s`; // Random delay
+        img.style.width = `${30 + Math.random() * 30}px`; // Random size
+        img.style.height = 'auto';
+        img.style.opacity = '0.1'; // Make them subtle
+        container.appendChild(img);
+    }
+});
+
+// Create custom cursor effect
+document.addEventListener('mousemove', function(e) {
+    // Create cursor element
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    document.body.appendChild(cursor);
+    
+    // Remove cursor after animation completes
+    setTimeout(() => {
+        cursor.remove();
+    }, 500);
+});
      </script>
 </body>
 </html>

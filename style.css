@@ -268,18 +268,18 @@ body {
             margin-left: auto;
         }
         
-        /* Chat Input */
-        .chat-input-container {
-            padding: 14px 1px;
-            border-top: 1px solid #eee;
-            display: flex;
-            background-color: white;
-            align-items: center;
-        }
-        
-      
+     /* Chat Input */
+.chat-input-container {
+    padding: 14px 1px;
+    border-top: 1px solid #eee;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-content: center; /* Centers the content horizontally */
+}
+
 .chat-input {
-    flex: 1;
+    width: 250px; /* Fixed width for the input */
     padding: 8px 12px;
     border: 1px solid #ddd;
     border-radius: 20px;
@@ -290,11 +290,11 @@ body {
     min-height: 3px;
     height: 36px;
 }
-        
-        .chat-input:focus {
-            border-color: #FF4500;
-            box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.1);
-        }
+
+.chat-input:focus {
+    border-left: 1px solid #bbb;  /* Adjust left border */
+    border-right: 1px solid #bbb; /* Adjust right border */
+}
         
         .send-button {
             background-color: #FF4500;
@@ -1088,16 +1088,34 @@ section.start-animation {
     width: 40px;
     transform: translateY(-5px);
   }
-   /* Chat input and send button adjustments for mobile */
-    .chat-input-container {
-        padding: 10px 12px;
-    }
-    
-    .chat-input {
-        height: 36px;
-        padding: 8px 10px;
-        font-size: 14px;
-    }
+       /* Chat Input */
+.chat-input-container {
+    padding: 14px 1px;
+    border-top: 1px solid #eee;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-content: center; /* Centers the content horizontally */
+}
+
+.chat-input {
+    width: 250px; /* Fixed width for the input */
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease;
+    min-height: 3px;
+    height: 36px;
+}
+
+.chat-input:focus {
+    border-left: 1px solid #bbb;  /* Adjust left border */
+    border-right: 1px solid #bbb; /* Adjust right border */
+}
+
     
     .send-button {
         width: 36px;
