@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMUNITAS FREE FIRE DELI SERDANG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #ff6b08;
+            --secondary-color: #0a1128;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent-color: #ffc30f;
+            --bg-dark: #0f1923;
+            --bg-light: #f1f1f1;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--bg-dark);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1c1b29 100%);
+        }
+        
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 20L20 0L40 20L20 40z' /%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Social Media Sidebar */
+        .social-sidebar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .social-sidebar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 5px 0;
+            color: var(--text-light);
+            border-radius: 0 8px 8px 0;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-sidebar a:hover {
+            width: 50px;
+        }
+
+        .social-sidebar .youtube {
+            background-color: #FF0000;
+        }
+
+        .social-sidebar .discord {
+            background-color: #7289DA;
+        }
+
+        .social-sidebar .instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem 7%;
+            background-color: rgba(10, 17, 40, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-logo img {
+            height: 70px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.3rem;
+        }
+
+        .navbar-nav a {
+            color: var(--text-light);
+            margin: 0 1rem;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navbar-nav a.active {
+            color: var(--primary-color);
+        }
+
+        .navbar-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-extra {
+            position: absolute;
+            right: 7%;
+            display: none;
+        }
+
+        .navbar-extra a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        /* Gallery Banner Section */
+        .gallery-banner {
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(135deg, var(--secondary-color) 0%, #1c1b29 100%);
+            color: white;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-top: 0;
+        }
+        
+        .gallery-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .gallery-banner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+        }
+        
+        .gallery-title {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .gallery-title i {
+            font-size: 3rem;
+        }
+        
+        .gallery-desc {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        /* Gallery Content */
+        .gallery-content {
+            padding: 80px 0;
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-tab {
+            padding: 8px 20px;
+            background: rgba(255, 107, 8, 0.1);
+            border: 1px solid rgba(255, 107, 8, 0.3);
+            border-radius: 30px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .gallery-tab.active, .gallery-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        /* Improved Gallery Item Styles */
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+            padding: 20px;
+            color: white;
+            transform: translateY(70%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+
+        
+        .gallery-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+           /* Improved Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+       .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+         .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 800px;
+        }
+           .modal-caption h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .modal-caption p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.5;
+        }
+            
+        .modal-close:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+           
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* Video Gallery Section */
+        .video-gallery {
+            margin-top: 80px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 16/9;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 107, 8, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-item:hover .video-play {
+            background-color: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 15px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 7% 1.5rem;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-about {
+            min-width: 300px;
+            margin-right: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: #bbb;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .footer-social {
+            flex: 0 0 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-social h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-social p {
+            margin-bottom: 15px;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        
+        .footer-social p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.8rem;
+        }
+
+        /* Animation for page elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .gallery-title, .gallery-desc, .gallery-tabs, .gallery-grid, .video-gallery {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .gallery-title {
+            animation-delay: 0.2s;
+        }
+        
+        .gallery-desc {
+            animation-delay: 0.4s;
+        }
+        
+        .gallery-tabs {
+            animation-delay: 0.6s;
+        }
+        
+        .gallery-grid {
+            animation-delay: 0.8s;
+        }
+        
+        .video-gallery {
+            animation-delay: 1s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8c3f;
+        }
+
+        /* Diagonal accent */
+        .diagonal-accent {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 350px;
+            height: 70px;
+            overflow: hidden;
+        }
+        
+        .diagonal-accent::before, .diagonal-accent::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            height: 5px;
+            background-color: var(--primary-color);
+        }
+        
+        .diagonal-accent::before {
+            top: 0;
+            width: 100%;
+        }
+        
+        .diagonal-accent::after {
+            top: 15px;
+            width: 60%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1000px) {
+            .gallery-title {
+                font-size: 3rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-about {
+                margin-right: 0;
+            }
+            
+            .diagonal-accent {
+                width: 250px;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+       /* Tablet improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+  
+  /* Navbar adjustments for mobile */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 3%;
+  }
+  
+  .navbar-logo img {
+    height: 30px;
+    margin-right: 23rem;
+  }
+  
+  .navbar-nav {
+    order: 3; /* Push nav below logo */
+    width: 100%;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+  
+  .navbar-nav a {
+    font-size: 0.5rem;
+    margin: 0 0.2rem;
+    padding: 0.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    width: auto;
+    margin-bottom: 1rem;
+    animation: typing 3s steps(20) infinite, blink-caret 2s step-end infinite;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+    margin-left: 20px;
+    margin-top: 2rem;
+  }
+  
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-about {
+    grid-column: span 1;
+  }
+  
+  .footer {
+    padding-bottom: 5rem;
+  }
+  
+  /* Social sidebar adjustment */
+  .social-sidebar {
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: rgba(10, 17, 40, 0.9);
+    justify-content: space-around;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    position: fixed;
+  }
+
+  .social-sidebar a {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+  
+  .social-sidebar a:hover {
+    width: 40px;
+    transform: translateY(-5px);
+  }
+      .modal-content {
+                max-width: 95%;
+            }
+            
+            .modal-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .modal-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .gallery-overlay {
+                padding: 15px;
+                transform: translateY(40%); /* Show more text on medium screens */
+                min-height: 60%;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 1rem;
+                top: -3px;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+        }
+}
+        
+        @media (max-width: 576px) {
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-about, .footer-social {
+                min-width: 100%;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+             .gallery-item {
+                aspect-ratio: 4/3; /* Slightly taller items on mobile */
+            }
+            
+            .modal-content img {
+                max-height: 70vh;
+            }
+            
+            .modal-caption {
+                margin-top: 10px;
+            }
+            
+            .gallery-overlay {
+                transform: translateY(25%); /* Show much more text on small screens */
+                padding: 12px;
+                min-height: 75%;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 0.95rem;
+                margin-bottom: 6px;
+                top: -2px;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.youtube.com/@Deliserdang1" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://discord.gg/q7MD2hmY" class="discord" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.instagram.com/ff.deliserdang/" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="navbar-logo">
+            <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+        </a>
+  
+        <div class="navbar-nav">
+            <a href="/">Home</a>
+            <a href="/daftarkan">Daftarkan</a>
+            <a href="/informasi">Informasi</a>
+            <a href="/listevent">List Event</a>
+            <a href="/galery" class="active">Galery</a>
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="/store">STORE</a>
+        </div>
+  
+        <div class="navbar-extra">
+            <a href="#" id="menu"><i class="fas fa-bars"></i></a>
+        </div>
+    </nav>
+
+    <!-- Gallery Banner Section -->
+    <section class="gallery-banner" id="gallery">
+        <div class="gallery-banner-container">
+            <h1 class="gallery-title">
+                <i class="fas fa-images"></i>
+                GALERI KOMUNITAS
+            </h1>
+            
+            <p class="gallery-desc">Kumpulan momen berkesan dari berbagai event Free Fire Deli Serdang yang telah kami selenggarakan untuk para gamers.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Content Section -->
+    <section class="gallery-content">
+        <div class="gallery-container">
+            <!-- Gallery Tabs -->
+            <div class="gallery-tabs">
+                <div class="gallery-tab active" data-filter="all">Semua</div>
+                <div class="gallery-tab" data-filter="tournament">Tournament</div>
+                <div class="gallery-tab" data-filter="gathering">Classmeet</div>
+                <div class="gallery-tab" data-filter="Booyah Ramadan">Booyah Ramadan</div>
+              
+                <div class="gallery-tab" data-filter="nobar">Nobar</div>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Tournament Photos -->
+                     <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/ffns2025fallds.jpeg" alt="Tournament Offline BR Komunitas">
+                    <div class="gallery-overlay">
+                        <h3>FFNS 2025 FALL - DELI SERDANG</h3>
+                        <p>Free Fire Nusantara Series 2025 yang di adakan di cafe VOC dengan total 51 Team (200+ participant).</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/Turnamen FFCSI - Deli Serdang.jpeg" alt="Turnamen FFCSI - Deli Serdang">
+                    <div class="gallery-overlay">
+                        <h3>Turnamen FFCSI - Deli Serdang</h3>
+                        <p>FFCSI Free Fire Clash Squad Indonesia, Turnamen ini diadakan setiap tahun oleh Komunitas Free Fire Indonesia.</p>
+                    </div>
+                </div>
+            
+                
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/Tournament Offline BR Komunitas.jpeg" alt="Tournament Offline BR Komunitas">
+                    <div class="gallery-overlay">
+                        <h3>Tournament Offline BR Komunitas</h3>
+                        <p>Turnamen offline komunitas ini selalu diadakan setiap 1 hingga beberapa kali setiap bulannya, lokasi acara di Cafe VOC.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/FFNS 3 DS.jpeg" alt="FFNS 3 - DELI SERDANG">
+                    <div class="gallery-overlay">
+                        <h3>FFNS 3 - DELI SERDANG</h3>
+                        <p>Free Fire Nusantara Series 3 diadakan di KFC Hub KualaNamu, berdekatan dengan bandara KNO.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/FUN MATCH OFFLINE MINI garena.jpeg" alt="FUN MATCH OFFLINE MINI WITH GARENA">
+                    <div class="gallery-overlay">
+                        <h3>FUN MATCH OFFLINE MINI WITH GARENA</h3>
+                        <p>Fun match offline ini diadakan komunitas yang kebetulan jadwal tim search Garena Indonesia kunjungan ke deli serdang.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/Grand Final GYC - Jakarta.jpeg" alt="Grand Final GYC - Jakarta">
+                    <div class="gallery-overlay">
+                        <h3>Grand Final GYC - Jakarta</h3>
+                        <p>Perwakilan tim dari sekolah SMAN 1 Binjai membawa slot menuju Grand Final GYC, mereka juga didampingi oleh CB Deli Serdang.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tournament">
+                    <img src="/assetsgaler/GYC - SMK PAB 7 SERDANG.jpeg" alt="GYC - SMK PAB 7 SERDANG">
+                    <div class="gallery-overlay">
+                        <h3>GYC - SMK PAB 7 SERDANG</h3>
+                        <p>SMK PAB 7 menjadi tuan rumah GYC tahun lalu, disini lah awal mula komunitas deli serdang membawa salah satu tin di Grand Final GYC tahun lalu.</p>
+                    </div>
+                </div>
+                
+                <!-- Gathering Photos -->
+                <div class="gallery-item" data-category="gathering">
+                    <img src="/assetsgaler/CLASSMEET - SMP MAITREYAWIRA.jpeg" alt="Gathering 2023">
+                    <div class="gallery-overlay">
+                        <h3>CLASSMEET - SMP MAITREYAWIRA</h3>
+                        <p>Sekolah ini berada di kecamatan Percut Sei Tuan dan dengan mayoritas China. Sekolah ini mendukung classmeet esport free fire. Sungguh luar biasa, jarang ada sekolah SMP sejauh ini yang mendukung classmeet esport.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="gathering">
+                    <img src="/assetsgaler/CLASSMEET - SMK JAYA KRAMA BERINGIN.jpeg" alt="Meet & Greet">
+                    <div class="gallery-overlay">
+                        <h3>CLASSMEET - SMK JAYA KRAMA BERINGIN</h3>
+                        <p>Komunitas mengembangkan minat pemain free fire di kalangan pelajar, bukan hanya sekedar umum.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="gathering">
+                    <img src="/assetsgaler/CLASSMEET - SMK HARAPAN BANGSA TAMORA.jpeg" alt="Meet & Greet">
+                    <div class="gallery-overlay">
+                        <h3>CLASSMEET - SMK HARAPAN BANGSA TAMORA</h3>
+                        <p>Classmeet yang diselenggarakan oleh Komunitas ini diadakan di sekolahan kecamatan Tanjung Morawa.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="gathering">
+                    <img src="/assetsgaler/CLASSMEET - SMA NUSANTARA LUBUK PAKAM.jpeg" alt="Meet & Greet">
+                    <div class="gallery-overlay">
+                        <h3>CLASSMEET - SMA NUSANTARA LUBUK PAKAM</h3>
+                        <p>Mengadakan acara classmeet di sebuah sekolah yang pernah lolos ke Grand Final GYC di jakarta.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="Booyah Ramadan">
+                    <img src="/assetsgaler/RAMADHAN BOOYAH 2024.jpeg" alt="Booyah Ramadan">
+                    <div class="gallery-overlay">
+                        <h3>RAMADHAN BOOYAH 2024</h3>
+                        <p>
+Berbagi bulan puasa Komunitas Free Fire Deli Serdang bersama Remaja Mesjid Baiturrahmah di depan mesjid.</p>
+                    </div>
+                </div>
+                
+             
+                
+                <!-- Nobar Photos -->
+                <!-- <div class="gallery-item" data-category="nobar">
+                    <img src="/api/placeholder/400/225" alt="Nobar FFWS 2024">
+                    <div class="gallery-overlay">
+                        <h3>Nobar FFWS 2024</h3>
+                        <p>Nonton bareng final Free Fire World Series 2024</p>
+                    </div>
+                </div> -->
+                
+
+            
+            <!-- Modal for Image Preview -->
+            <div class="modal" id="imageModal">
+                <span class="modal-close">&times;</span>
+                <div class="modal-content">
+                    <img src="" id="modalImage" alt="Preview Image">
+                </div>
+            </div>
+            
+            <!-- Video Gallery Section -->
+            <!-- <div class="video-gallery">
+                <h2 class="section-title">Highlight Video</h2>
+                
+                <div class="video-grid">
+                    <div class="video-item">
+                        <img src="/api/placeholder/400/225" alt="Tournament Highlights" class="video-thumbnail">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-title">Final Tournament Deli Serdang Cup 2023</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="/api/placeholder/400/225" alt="Event Recap" class="video-thumbnail">
+                    <div class="video-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-title">Gathering Komunitas FFDS - Taman Bunga Lubang Buaya</div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="/api/placeholder/400/225" alt="Workshop" class="video-thumbnail">
+                    <div class="video-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-title">Workshop Strategi Bermain dengan Pro Player</div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="/api/placeholder/400/225" alt="Community Event" class="video-thumbnail">
+                    <div class="video-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-title">Anniversary 1st FFDS 2023 - Highlight</div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="/assets/logoffds.png" alt="FF Deli Serdang Logo">
+                </div>
+                <p>Pendiri komunitas ini adalah Muhammad Azra, atau di kenal para gamers free fire di sumatera utara dengan sebutan Dr.Az. Beliau seorang Event Organizer EO dulunya yang terjun membuat event turnamen free fire pada tahun 2020 hingga sekarang mendirikan komunitas free fire deli serdang. tidak heran dengan perjuangan yang mandiri selama 3 tahun hingga 2023 bisa mendirikan komunitas free fire deli serdang ini. Beliau sukses mendirikan komunitas ini pada saat menjadi Volunteer di event anniversary ff 5th di Carefoor Medan Fair. ketemu oleh teman teman komunitas lainnya dan tim dari garena free fire indonesia.</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@Deliserdang1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://discord.gg/q7MD2hmY" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.instagram.com/ff.deliserdang/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Kontak Kami</h3>
+                <p><i class="fas fa-envelope"></i> komunitasffdeliserdang@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 083131861584</p>
+                <p><i class="fas fa-map-marker-alt"></i> Deli Serdang, Sumatera Utara</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Komunitas Free Fire Deli Serdang. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+          // Mobile Navigation Toggle
+        const navbarNav = document.querySelector('.navbar-nav');
+        const menuButton = document.querySelector('#menu');
+        
+        if (menuButton) {
+            menuButton.addEventListener('click', function() {
+                navbarNav.classList.toggle('active');
+            });
+        }
+        
+        // Close navbar when clicking navbar links
+        document.querySelectorAll('.navbar-nav a').forEach(function(element) {
+            element.addEventListener('click', function() {
+                navbarNav.classList.remove('active');
+            });
+        });
+        
+        // Gallery Filtering Functionality
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Filter gallery items
+                const filter = tab.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        // Add animation
+                        item.style.animation = 'fadeInUp 0.5s forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Improved Image Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.querySelector('.modal-close');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const itemTitle = item.querySelector('.gallery-overlay h3').textContent;
+                const itemDesc = item.querySelector('.gallery-overlay p').textContent;
+                
+                // Show modal with transition
+                modal.style.display = 'flex';
+                modalImg.src = imgSrc;
+                modalTitle.textContent = itemTitle;
+                modalDescription.textContent = itemDesc;
+                
+                // Prevent scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Add smooth appearance
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                }, 10);
+            });
+        });
+        
+        modalClose.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside of the content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }, 300);
+        }
+        
+        // Initialize modal with opacity transition
+        modal.style.transition = 'opacity 0.3s ease';
+        modal.style.opacity = '0';
+        
+        // Video Play Functionality (Simplified - would need actual YouTube/video player implementation)
+        const videoItems = document.querySelectorAll('.video-item');
+        
+        videoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const videoTitle = item.querySelector('.video-title').textContent;
+                alert('Video player would open: ' + videoTitle);
+                // In a real implementation, this would open a video player or redirect to YouTube
+            });
+        });
+        
+        // Add smooth scrolling effect for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Preload gallery images for smoother experience
+        window.addEventListener('load', () => {
+            galleryItems.forEach(item => {
+                const img = item.querySelector('img');
+                const imgSrc = img.src;
+                
+                // Create a new image to preload
+                const preloadImg = new Image();
+                preloadImg.src = imgSrc;
+            });
+        });
+    </script>
+</body>
+</html>
