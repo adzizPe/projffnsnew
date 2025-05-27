@@ -557,6 +557,7 @@
             border-radius: 8px;
             margin-bottom: 15px;
             text-align: center;
+            font-weight: 600;
         }
 
         .success-actions {
@@ -620,6 +621,24 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Auto redirect notification */
+        .redirect-notification {
+            display: none;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
 
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -788,7 +807,77 @@
         </div>
 
         <div class="event-container">
-            <!-- Event Card 1 - FFNS 2025 Fall City Qualifier -->
+         
+            
+            <!-- Event Card 2 - Community Tournament (moved inside the main event-container) -->
+          <div class="event-card">
+        <img src="/assets/TOUR FREE REGIST NEW.jpg" alt="Tournament Poster" class="event-banner">
+      <div class="event-content">
+                    <h2 class="event-title">CR BERHADIAH SOLO</h2>
+                    <p class="event-description">
+                     Halo bray, yuk daftar Fun Match CR Berhadiah Solo Gratisss.. Setiap hari hadiah saldo Rp10.000 atau 70 Diamond (bisa pilih salah satu)
+
+                    </p>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Matchday</h4>
+                                <p>Setiap Hari
+                                    Jam : 20.00 wib
+                                </p>
+                            </div>
+                        </div>
+                    
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Biaya</h4>
+                                <p>Gratis Pendaftaran</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="detail-text">
+                                <h4>Hadiah</h4>
+                                <p> Rp10.000 atau 70 Diamond</p>
+                            </div>
+                        </div>
+                    </div>
+                    1 Match - Map Random
+
+                    
+                    <div class="event-cta">
+                        <div class="highlight-box">
+                            <h3>CP: 083131861584 (Dr.Az)</h3>
+                        </div>
+                        
+                        <!-- Changed to direct link to form -->
+                        <button class="btn-register" id="showModalBtn">Daftar</button>
+                    </div>
+                    
+              <div class="event-hashtags">
+                        <span class="event-hashtag">#freefire</span>
+                        <span class="event-hashtag">#crberhadiah</span>
+                        <span class="event-hashtag">#battleroyale</span>
+                        <span class="event-hashtag">#solo bebas</span>
+                    </div>
+                </div>
+            <div class="event-cta" style="margin-top: auto;">
+                <!-- The key change is here - added id to the button and made it a proper button element -->
+              
+            </div>
+        </div>
+           <!-- Event Card 1 - FFNS 2025 Fall City Qualifier -->
             <div class="event-card">
                 <img src="/assets/ffnscqds.jpg" alt="FFNS 2025 Fall City Qualifier" class="event-banner">
                 <div class="event-content">
@@ -855,75 +944,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Event Card 2 - Community Tournament (moved inside the main event-container) -->
-          <div class="event-card">
-        <img src="/assets/TOUR FREE REGIST NEW.jpg" alt="Tournament Poster" class="event-banner">
-      <div class="event-content">
-                    <h2 class="event-title">CR BERHADIAH SOLO</h2>
-                    <p class="event-description">
-                     Halo bray, yuk daftar Fun Match CR Berhadiah Solo Gratisss.. Setiap hari hadiah saldo Rp10.000 atau 70 Diamond (bisa pilih salah satu)
-
-                    </p>
-                    
-                    <div class="event-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Matchday</h4>
-                                <p>Setiap Hari
-                                    Jam : 20.00 wib
-                                </p>
-                            </div>
-                        </div>
-                    
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Biaya</h4>
-                                <p>Gratis Pendaftaran</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="detail-text">
-                                <h4>Hadiah</h4>
-                                <p> Rp10.000 atau 70 Diamond</p>
-                            </div>
-                        </div>
-                    </div>
-                    1 Match - Map Random
-
-                    
-                    <div class="event-cta">
-                        <div class="highlight-box">
-                            <h3>CP: 083131861584 (Dr.Az)</h3>
-                        </div>
-                        
-                        <!-- Changed to direct link to form -->
-                        <button class="btn-register" id="showModalBtn">Daftar</button>
-                    </div>
-                    
-                    <div class="event-hashtags">
-                        <span class="event-hashtag">#freefire</span>
-                        <span class="event-hashtag">#crberhadiah</span>
-                        <span class="event-hashtag">#battleroyale</span>
-                        <span class="event-hashtag">#solo bebas</span>
-                    </div>
-                </div>
-            <div class="event-cta" style="margin-top: auto;">
-                <!-- The key change is here - added id to the button and made it a proper button element -->
-              
-            </div>
-        </div>
     </div>
 
    <!-- Registration Modal -->
@@ -1003,145 +1023,208 @@
     </footer>
    
     <script>
-        // Fixed JavaScript for event card and form submission
-        document.addEventListener('DOMContentLoaded', function() {
-            // Image display code remains the same
-            const eventBanners = document.querySelectorAll('.event-banner');
-            eventBanners.forEach(banner => {
-                banner.style.objectFit = 'contain';
-                banner.style.backgroundColor = '#000';
-                banner.style.padding = '10px';
-            });
+   // Updated JavaScript with smooth WhatsApp redirect for mobile (no pop-ups)
+document.addEventListener('DOMContentLoaded', function() {
+    // Image display code remains the same
+    const eventBanners = document.querySelectorAll('.event-banner');
+    eventBanners.forEach(banner => {
+        banner.style.objectFit = 'contain';
+        banner.style.backgroundColor = '#000';
+        banner.style.padding = '10px';
+    });
+    
+    // Get DOM elements
+    const showModalBtn = document.getElementById('showModalBtn');
+    const modal = document.getElementById('registrationModal');
+    const closeBtn = document.querySelector('.close');
+    const form = document.getElementById('registrationForm');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const successMessage = document.getElementById('successMessage');
+    const successActions = document.getElementById('successActions');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    
+    // Open modal when clicking the button
+    showModalBtn.addEventListener('click', function() {
+        modal.style.display = 'block';
+    });
+    
+    // Close modal when clicking the close button
+    closeBtn.addEventListener('click', function() {
+        closeModal();
+    });
+    
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Close modal function
+    window.closeModal = function() {
+        modal.style.display = 'none';
+        // Reset form and messages
+        form.reset();
+        successMessage.style.display = 'none';
+        successActions.style.display = 'none';
+        loadingSpinner.style.display = 'none';
+    };
+    
+    // Enhanced form submission handler with smooth mobile WhatsApp redirect
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading spinner
+        loadingSpinner.style.display = 'block';
+        
+        // Get form data
+        const formData = {
+            fullName: document.getElementById('fullName').value,
+            nickname: document.getElementById('nickname').value,
+            uid: document.getElementById('uid').value,
+            whatsapp: document.getElementById('whatsapp').value,
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log("Submitting form data:", formData);
+        
+        // Google Apps Script Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyF8jGwf4Qt_iUGLOGqv2-Ee5MxvuNI-AV7UWPmjQMjQPtNw3cJ_MWfcumsX4HRnRrX6A/exec';
+        
+        // Prepare URL with parameters for Google Sheets
+        let url = scriptURL + '?';
+        url += 'fullName=' + encodeURIComponent(formData.fullName);
+        url += '&nickname=' + encodeURIComponent(formData.nickname);
+        url += '&uid=' + encodeURIComponent(formData.uid);
+        url += '&whatsapp=' + encodeURIComponent(formData.whatsapp);
+        url += '&timestamp=' + encodeURIComponent(formData.timestamp);
+        
+        // Create a hidden iframe for form submission to Google Sheets
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        // Enhanced function to detect mobile device
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent.toLowerCase()) ||
+                   window.innerWidth <= 768 ||
+                   ('ontouchstart' in window);
+        }
+        
+        // Function to open WhatsApp with improved mobile compatibility
+        function openWhatsApp() {
+            const groupLink = 'https://chat.whatsapp.com/DtcP3MeAP0FKsbPHPwmSQQ';
             
-            // Get DOM elements
-            const showModalBtn = document.getElementById('showModalBtn');
-            const modal = document.getElementById('registrationModal');
-            const closeBtn = document.querySelector('.close');
-            const form = document.getElementById('registrationForm');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const successMessage = document.getElementById('successMessage');
-            const successActions = document.getElementById('successActions');
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            
-            // Open modal when clicking the button
-            showModalBtn.addEventListener('click', function() {
-                modal.style.display = 'block';
-            });
-            
-            // Close modal when clicking the close button
-            closeBtn.addEventListener('click', function() {
-                closeModal();
-            });
-            
-            // Close modal when clicking outside the modal content
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    closeModal();
+            if (isMobileDevice()) {
+                // Mobile device - use location.href for smooth transition without pop-up blocking
+                try {
+                    // First try to open WhatsApp app directly
+                    window.location.href = groupLink;
+                } catch (error) {
+                    // Fallback method if location.href fails
+                    const link = document.createElement('a');
+                    link.href = groupLink;
+                    link.target = '_self'; // Use _self instead of _blank to avoid pop-up blocker
+                    link.rel = 'noopener';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
                 }
-            });
+            } else {
+                // Desktop - directly open WhatsApp group link
+                try {
+                    // Create a link and click it to avoid pop-up blockers
+                    const link = document.createElement('a');
+                    link.href = groupLink;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (error) {
+                    // Final fallback: use window.open as last resort
+                    window.open(groupLink, '_blank');
+                }
+            }
+        }
+        
+        // When iframe loads (data submitted to Google Sheets), show success and redirect
+        iframe.onload = function() {
+            loadingSpinner.style.display = 'none';
             
-            // Close modal function
-            window.closeModal = function() {
+            // Show success message with device-specific text
+            if (isMobileDevice()) {
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Pendaftaran berhasil! Lu diarahkan ke grup wa ya der';
+            } else {
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Pendaftaran berhasil! Lu diarahkan ke grup wa ya der';
+            }
+            successMessage.style.display = 'block';
+            
+            // Shorter delay for mobile, longer for desktop
+            const redirectDelay = isMobileDevice() ? 1500 : 2000;
+            
+            // Automatic redirect to WhatsApp
+            setTimeout(() => {
+                // Close modal first
                 modal.style.display = 'none';
+                
                 // Reset form and messages
                 form.reset();
                 successMessage.style.display = 'none';
                 successActions.style.display = 'none';
-                loadingSpinner.style.display = 'none';
-            };
+                
+                // Open WhatsApp with device-appropriate method
+                openWhatsApp();
+            }, redirectDelay);
             
-            // Form submission handler with WhatsApp integration
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show loading spinner
-                loadingSpinner.style.display = 'block';
-                
-                // Get form data
-                const formData = {
-                    fullName: document.getElementById('fullName').value,
-                    nickname: document.getElementById('nickname').value,
-                    uid: document.getElementById('uid').value,
-                    whatsapp: document.getElementById('whatsapp').value,
-                    timestamp: new Date().toISOString()
-                };
-                
-                console.log("Submitting form data:", formData);
-                
-                // UPDATED: The script URL for your Google Apps Script Web App
-                // PENTING: Ganti URL ini dengan URL deployment terbaru Web App Anda
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbyF8jGwf4Qt_iUGLOGqv2-Ee5MxvuNI-AV7UWPmjQMjQPtNw3cJ_MWfcumsX4HRnRrX6A/exec';
-                
-                // Method 1: Use formData directly with URL parameters
-                let url = scriptURL + '?';
-                url += 'fullName=' + encodeURIComponent(formData.fullName);
-                url += '&nickname=' + encodeURIComponent(formData.nickname);
-                url += '&uid=' + encodeURIComponent(formData.uid);
-                url += '&whatsapp=' + encodeURIComponent(formData.whatsapp);
-                url += '&timestamp=' + encodeURIComponent(formData.timestamp);
-                
-                // Create a hidden iframe for form submission
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-                
-                // When iframe loads, show success and remove iframe
-                iframe.onload = function() {
-                    loadingSpinner.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    successActions.style.display = 'flex';
-                    
-                    // Prepare WhatsApp message (simple version)
-                    const whatsappMessage = `Halo, saya baru saja mendaftar CR Berhadiah Solo. Terima kasih!`;
-                    
-                    // Set WhatsApp GROUP link (replace with your group invite link)
-                    const whatsappURL = `https://chat.whatsapp.com/DtcP3MeAP0FKsbPHPwmSQQ`;
-                    whatsappBtn.href = whatsappURL;
-                    
-                    form.reset();
-                    
-                    // Auto redirect to WhatsApp after 3 seconds
-                    setTimeout(() => {
-                        window.open(whatsappURL, '_blank');
-                    }, 2000);
-                    
-                    // Clean up iframe
-                    setTimeout(() => {
-                        if (document.body.contains(iframe)) {
-                            document.body.removeChild(iframe);
-                        }
-                    }, 5000);
-                };
-                
-                // Handle errors
-                iframe.onerror = function() {
-                    loadingSpinner.style.display = 'none';
-                    
-                    // Still show success and allow WhatsApp contact even if Google Sheets fails
-                    successMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Pendaftaran diterima! Silakan hubungi admin via WhatsApp.';
-                    successMessage.style.display = 'block';
-                    successActions.style.display = 'flex';
-                    
-                    // Prepare WhatsApp message for manual registration (simple version)
-                    const whatsappMessage = `Halo, saya ingin mendaftar CR Berhadiah Solo. Terima kasih!`;
-                    
-                    // Set WhatsApp GROUP link (replace with your group invite link)
-                    const whatsappURL = `https://chat.whatsapp.com/DtcP3MeAP0FKsbPHPwmSQQ`;
-                    whatsappBtn.href = whatsappURL;
-                    
-                    if (document.body.contains(iframe)) {
-                        document.body.removeChild(iframe);
-                    }
-                };
-                
-                // Set iframe source to the URL with parameters
-                iframe.src = url;
-            });
-        });
-    </script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+            // Clean up iframe
+            setTimeout(() => {
+                if (document.body.contains(iframe)) {
+                    document.body.removeChild(iframe);
+                }
+            }, 5000);
+        };
         
+        // Handle errors - still redirect to WhatsApp even if Google Sheets fails
+        iframe.onerror = function() {
+            loadingSpinner.style.display = 'none';
+            
+            // Show modified success message
+            if (isMobileDevice()) {
+                successMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Pendaftaran diterima! Lu diarahkan ke grup wa ya der...';
+            } else {
+                successMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Pendaftaran diterima! Lu diarahkan ke grup wa ya der...';
+            }
+            successMessage.style.display = 'block';
+            
+            // Still redirect to WhatsApp after error
+            const redirectDelay = isMobileDevice() ? 1500 : 2000;
+            
+            setTimeout(() => {
+                // Close modal first
+                modal.style.display = 'none';
+                
+                // Reset form and messages
+                form.reset();
+                successMessage.style.display = 'none';
+                successActions.style.display = 'none';
+                
+                // Open WhatsApp with device-appropriate method
+                openWhatsApp();
+            }, redirectDelay);
+            
+            if (document.body.contains(iframe)) {
+                document.body.removeChild(iframe);
+            }
+        };
+        
+        // Set iframe source to trigger the Google Apps Script
+        iframe.src = url;
+    });
+});
     </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
 </body>
 </html>

@@ -1,7 +1,5 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 /* Base Styles */
 :root {
   --primary-color: #ff6b08;
@@ -428,25 +426,25 @@ body {
 }
 
 /* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-    padding: 0.8rem 7%;
-  background-color: rgba(10, 17, 40, 0.9);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-}
+/* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem 7%;
+            background-color: rgba(10, 17, 40, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
 
-.navbar-logo img {
-  height: 60px;
-}
-
+        .navbar-logo img {
+            height: 70px;
+        }
 
         .navbar-nav {
             display: flex;
@@ -455,16 +453,15 @@ body {
             font-size: 1.3rem;
         }
 
- .navbar-nav a {
+        .navbar-nav a {
             color: var(--text-light);
             margin: 0 1rem;
-            font-weight: 300;
+            font-weight: 500;
             position: relative;
             transition: var(--transition);
-            
         }
 
-   .navbar-nav a.active {
+        .navbar-nav a.active {
             color: var(--primary-color);
         }
 
@@ -498,7 +495,6 @@ body {
             color: var(--text-light);
             font-size: 1.5rem;
         }
-
 /* Hero Section */
 .hero {
   display: flex;
