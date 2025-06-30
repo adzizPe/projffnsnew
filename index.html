@@ -539,56 +539,34 @@
                     </div>
                 </a>
             </div>
-            
-         
-
            
     </section>
-
-
-
-   <!-- Registration Form Modal -->
-<div id="eventFormModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
+    
+    <section id="redeem-section" class="features">
+    <div class="redeem-container">
+        <h2 class="events-title">Redeem Kode DM LIVE</h2>
+        <p class="redeem-description">
+            Masukkan ID Free Fire kamu dan kode redeem spesial dari event untuk klaim hadiahmu sekarang!
+        </p>
         
-        <!-- Event Details Section -->
-        <div class="event-details-section">
-            <h2>NOBAR FFWS SEA SPRING 2025 - DAY 12</h2>
-            <div class="event-details">
-                <p><i class="fas fa-users"></i> Komunitas Free Fire Deli Serdang</p>
-                <p><i class="fas fa-calendar-alt"></i> Minggu, 18 Mei 2025</p>
-                <p><i class="fas fa-map-marker-alt"></i> Venue: VOC CAFE - LUBUK PAKAM</p>
-                <p><i class="fas fa-gem"></i> SEMUA PENONTON MENDAPATKAN 100 DIAMOND</p>
-                <p><i class="fas fa-phone"></i> Contact Person: 083131861584</p>
-                <p><i class="fab fa-instagram"></i> Instagram: @ff.deliserdang</p>
-            </div>
+        <div class="redeem-form-container">
+            <form id="redeemForm">
+                <div class="form-group">
+                    <label for="redeemIdFreeFire">ID Game Free Fire Anda</label>
+                    <input type="text" id="redeemIdFreeFire" name="redeemIdFreeFire" placeholder="Masukkan ID game ff mu" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="redeemCode">Kode Redeem</label>
+                    <input type="text" id="redeemCode" name="redeemCode" placeholder="masukkan kode nya sini" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Klaim Hadiah</button>
+            </form>
+            <div id="redeemMessage" class="form-message"></div>
         </div>
-        
-        <h3 class="form-title">ISI DATA</h3>
-        <form id="registrationForm">
-            <div class="form-group">
-                <label for="nama">Nama Lengkap:</label>
-                <input type="text" id="nama" name="nama" required>
-            </div>
-            <div class="form-group">
-                <label for="alamat">nickname:</label>
-                <textarea id="alamat" name="alamat" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="whatsapp">Nomor WhatsApp:</label>
-                <input type="text" id="whatsapp" name="whatsapp" required>
-            </div>
-            <div class="form-group">
-    <label for="id_free_fire">ID Free Fire:</label>
-    <input type="text" id="id_free_fire" name="id_free_fire" required>
-</div>
-            <button type="submit" class="submit-btn">KIRIM</button>
-        </form>
-        <div id="form-message"></div>
     </div>
-</div>
-    <!--<a href="#" class="event-card"> <img src="assets/turnamen.jpeg" alt="" class="event-image"> <div class="event-overlay"> <h3 class="event-title"></h3> <div class="event-info"> <i class="fas fa-calendar"></i> </div> <div class="event-info"> <i class="fas fa-map-marker-alt"></i> </div> </div> </a>-->
+</section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -640,6 +618,7 @@
     </footer>
         <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QR392TM0TM"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -647,8 +626,10 @@
 
   gtag('config', 'G-QR392TM0TM');
 </script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4262074946165093"
      crossorigin="anonymous"></script>
+
      <script>
      
         // Wait for DOM to be fully loaded
@@ -910,6 +891,7 @@ document.addEventListener('mousemove', function(e) {
     }, 500);
 });
      </script>
+
        <script>
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -1037,5 +1019,78 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+<!--script buat kode reedem dm live yt-->
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const redeemForm = document.getElementById('redeemForm');
+    const redeemMessage = document.getElementById('redeemMessage');
+
+    // --- PENGATURAN KODE REDEEM ---
+    // Ganti 'FFDSLIVE2025' dengan satu kode yang Anda inginkan.
+    // Kode ini case-sensitive (huruf besar/kecil berpengaruh).
+    const validCode = 'FFDSLIVE2025';
+
+    // --- PENGATURAN WHATSAPP ---
+    // Ganti dengan nomor WhatsApp admin yang akan menerima notifikasi.
+    // Gunakan format 628... tanpa spasi atau simbol.
+    const adminWhatsappNumber = '6283821675273'; // Pastikan nomor ini sudah benar.
+
+    if (redeemForm) { // Memastikan elemen form ada sebelum menambahkan event listener
+        redeemForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form reload halaman
+
+            // Ambil data dari form
+            const idFreeFire = document.getElementById('redeemIdFreeFire').value.trim();
+            const inputCode = document.getElementById('redeemCode').value.trim();
+            
+            // Hapus pesan lama
+            redeemMessage.innerHTML = '';
+            redeemMessage.className = 'form-message';
+
+            // 1. Cek apakah pengguna sudah pernah redeem sebelumnya
+            if (localStorage.getItem('hasRedeemedCode') === 'true') {
+                redeemMessage.innerHTML = '<p class="error-message">Gagal! Anda sudah pernah me-redeem kode di perangkat ini.</p>';
+                return;
+            }
+
+            // 2. Validasi input dasar
+            if (!idFreeFire || !inputCode) {
+                redeemMessage.innerHTML = '<p class="error-message">Mohon lengkapi ID Free Fire dan Kode Redeem Anda.</p>';
+                return;
+            }
+
+            // 3. Validasi kode redeem (sekarang hanya membandingkan dengan satu kode)
+            if (inputCode !== validCode) {
+                redeemMessage.innerHTML = '<p class="error-message">Kode redeem yang Anda masukkan tidak valid atau salah.</p>';
+                return;
+            }
+
+            // --- Jika semua validasi lolos ---
+            
+            // 4. Tandai bahwa pengguna ini sudah redeem
+            localStorage.setItem('hasRedeemedCode', 'true');
+
+            // 5. Buat pesan untuk WhatsApp
+            const messageText = `🔥 *KLAIM KODE REDEEM DARI USER* 🔥\n\nUser dengan data berikut telah berhasil me-redeem kode:\n\n*ID Free Fire:* ${idFreeFire}\n*Kode yang Diredeem:* ${inputCode}\n\nSilakan kirim hadiah ke ID tersebut.\nTerima kasih.`;
+            
+            const encodedMessage = encodeURIComponent(messageText);
+            const whatsappURL = `https://wa.me/${adminWhatsappNumber}?text=${encodedMessage}`;
+
+            // 6. Tampilkan pesan sukses dan buka WhatsApp
+            redeemMessage.innerHTML = '<p class="success-message">Selamat! Kode berhasil di-redeem. Anda akan dialihkan ke WhatsApp untuk konfirmasi.</p>';
+
+            // Buka WhatsApp di tab baru setelah 2 detik
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+            }, 2000);
+
+            // Reset form setelah berhasil
+            redeemForm.reset();
+        });
+    }
+});
+</script>
+
 </body>
 </html>
