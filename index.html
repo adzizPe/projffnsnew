@@ -26,6 +26,117 @@
             color: #FF5722;
             font-weight: bold;
         }
+        /* =================================
+   STYLE UNTUK SECTION ARTIKEL BARU
+   ================================= */
+.blog-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9; /* Sedikit berbeda dari background utama agar ada pemisah */
+}
+
+.blog-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.article-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.article-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-image-container {
+    position: relative;
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #FF5722;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.card-excerpt {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.section-cta {
+    margin-top: 40px;
+}
+
+.section-cta .button {
+    background-color: #FF5722;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.section-cta .button:hover {
+    background-color: #E64A19;
+}
 .redeem-container {
     max-width: 600px; /* Batas lebar maksimum, ini kuncinya agar tidak melebar */
     margin: 0 auto;   /* Membuat container berada di tengah halaman */
@@ -572,7 +683,55 @@
         </div>
     </div>
 </section>
+<section class="blog-section" id="blog">
+    <div class="container">
+        <h2 class="section-title">Artikel & Berita Terbaru</h2>
+        <p class="section-subtitle">Dapatkan wawasan, tips & trik, serta berita terkini seputar dunia Free Fire dari komunitas kami.</p>
+        
+        <div class="articles-grid">
+            <div class="article-card">
+                <a href="artikel-1.html">
+                    <div class="card-image-container">
+                        <img src="assets/rusher-image.jpg" alt="Tips menjadi Rusher handal">
+                        <span class="card-category">TIPS & TRIK</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">5 Tips Menjadi Rusher Handal di Free Fire 2025</h3>
+                        <p class="card-excerpt">Menjadi ujung tombak tim bukanlah hal mudah. Pelajari strategi, pemilihan senjata, dan cara bergerak yang benar...</p>
+                    </div>
+                </a>
+            </div>
 
+            <div class="article-card">
+                <a href="#"> <div class="card-image-container">
+                        <img src="assets/turnamen-ulasan.jpg" alt="Ulasan turnamen FFDS">
+                        <span class="card-category">EVENT</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Ulasan Lengkap Turnamen FFDS x Golden Coffee</h3>
+                        <p class="card-excerpt">Lihat kembali momen-momen seru, para juara, dan analisis pertandingan dari event offline terbesar bulan ini...</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="article-card">
+                <a href="#"> <div class="card-image-container">
+                        <img src="assets/strategi-map.jpg" alt="Peta Kalahari">
+                         <span class="card-category">STRATEGI</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Strategi Mendarat Terbaik di Peta Kalahari Update Terbaru</h3>
+                        <p class="card-excerpt">Pemilihan lokasi pendaratan menentukan 50% kemenangan. Kami bedah lokasi-lokasi strategis yang wajib kamu kuasai...</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="section-cta">
+            <a href="blog.html" class="button">Lihat Semua Artikel</a>
+        </div>
+    </div>
+</section>
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
