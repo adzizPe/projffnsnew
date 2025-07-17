@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog & Informasi - Komunitas Free Fire Deli Serdang</title>
-    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="/assets/logoffds.png" type="image/x-icon">
     <style>
-        body { background-color: #f4f4f9; color: #333; }
+        /* Tetap gunakan CSS dari file style.css Anda, ini hanya tambahan spesifik halaman */
+        body { background-color: #f4f4f9; color: #333; font-family: 'Poppins', sans-serif; }
         .page-header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/hero-bg.jpg') no-repeat center center/cover;
-            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/hero-bg.jpg') no-repeat center center/cover;
+            padding: 120px 20px 60px;
             text-align: center;
             color: white;
         }
@@ -30,6 +32,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .article-card:hover {
             transform: translateY(-10px);
@@ -40,10 +44,10 @@
             height: 200px;
             object-fit: cover;
         }
-        .article-content { padding: 20px; }
+        .article-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .article-content h3 { font-size: 1.5rem; color: #FF5722; margin-bottom: 10px; }
-        .article-content p { font-size: 1rem; color: #555; margin-bottom: 20px; }
-        .article-meta { font-size: 0.8rem; color: #777; margin-bottom: 20px; }
+        .article-content p.article-meta { font-size: 0.8rem; color: #777; margin-bottom: 15px; }
+        .article-content p.excerpt { font-size: 1rem; color: #555; margin-bottom: 20px; flex-grow: 1; }
         .read-more-btn {
             display: inline-block;
             background-color: #FF5722;
@@ -52,6 +56,8 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            margin-top: auto;
+            align-self: flex-start;
         }
     </style>
 </head>
@@ -60,13 +66,12 @@
         <a href="index.html" class="navbar-logo">
              <img src="assets/logoffds.png" alt="FF Deli Serdang Logo">
         </a>
-     
         <div class="navbar-nav">
              <a href="index.html">Home</a>
              <a href="tentang.html">Tentang Kami</a>
-             <a href="blog.html">Blog</a>
-             <a href="index.html#listevent">List Event</a> </div>
-         
+             <a href="blog.html" class="active">Blog</a>
+             <a href="/listevent">List Event</a>
+        </div>
         <div class="navbar-extra">
              <a href="#" id="menu"><i class="fas fa-bars"></i></a>
         </div>
@@ -79,38 +84,47 @@
 
     <main class="articles-container">
         <div class="article-card">
-            <img src="assets/rusher-image.jpg" alt="Pemain Free Fire sedang menyerang">
+            <img src="assets/rusher-image.png" alt="Pemain Free Fire sedang menyerang">
             <div class="article-content">
                 <h3>5 Tips Menjadi Rusher Handal di Free Fire 2025</h3>
-                <p class="article-meta">Oleh Dr.Az | Dipublikasikan: 1 Juli 2025</p>
-                <p>Menjadi seorang rusher yang ditakuti lawan membutuhkan skill, strategi, dan keberanian. Simak tips jitu untuk mengasah kemampuan...</p>
+                <p class="article-meta">Oleh Dr.Az | 1 Juli 2025</p>
+                <p class="excerpt">Menjadi seorang rusher yang ditakuti lawan membutuhkan skill, strategi, dan keberanian. Simak tips jitu untuk mengasah kemampuan...</p>
                 <a href="artikel-1.html" class="read-more-btn">Baca Selengkapnya</a>
             </div>
         </div>
 
         <div class="article-card">
-            <img src="assets/turnamen-ulasan.jpg" alt="Piala Turnamen Free Fire">
+            <img src="assets/turnamen-ulasan.png" alt="Piala Turnamen Free Fire">
             <div class="article-content">
                 <h3>Ulasan Lengkap Turnamen FFDS x Golden Coffee</h3>
-                <p class="article-meta">Oleh Admin | Dipublikasikan: 28 Juni 2025</p>
-                <p>Turnamen offline kembali digelar dan berlangsung sengit! Lihat siapa saja para pemenang dan momen-momen terbaik dari event kemarin...</p>
-                <a href="#" class="read-more-btn">Baca Selengkapnya</a>
-            </div>
-        </div>
-        
-        <div class="article-card">
-            <img src="assets/strategi-map.jpg" alt="Peta Bermuda di Free Fire">
-            <div class="article-content">
-                <h3>Strategi Mendarat Terbaik di Peta Kalahari Update Terbaru</h3>
-                <p class="article-meta">Oleh Dr.Az | Dipublikasikan: 25 Juni 2025</p>
-                <p>Pemilihan lokasi mendarat adalah kunci kemenangan. Kami bedah lokasi-lokasi strategis di map Kalahari yang wajib kamu kuasai...</p>
-                <a href="#" class="read-more-btn">Baca Selengkapnya</a>
+                <p class="article-meta">Oleh Admin | 28 Juni 2025</p>
+                <p class="excerpt">Turnamen offline kembali digelar dan berlangsung sengit! Lihat siapa saja para pemenang dan momen-momen terbaik dari event kemarin...</p>
+                <a href="artikel-2.html" class="read-more-btn">Baca Selengkapnya</a>
             </div>
         </div>
 
-        </main>
-    
+        <div class="article-card">
+            <img src="assets/strategi-map.png" alt="Peta Bermuda di Free Fire">
+            <div class="article-content">
+                <h3>Strategi Mendarat Terbaik di Peta Kalahari Update Terbaru</h3>
+                <p class="article-meta">Oleh Dr.Az | 25 Juni 2025</p>
+                <p class="excerpt">Pemilihan lokasi mendarat adalah kunci kemenangan. Kami bedah lokasi-lokasi strategis di map Kalahari yang wajib kamu kuasai...</p>
+                <a href="artikel-3.html" class="read-more-btn">Baca Selengkapnya</a>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <img src="assets/support-role.png" alt="Karakter support Free Fire">
+            <div class="article-content">
+                <h3>Mengenal Peran Support: Pahlawan Tanpa Tanda Jasa di Free Fire</h3>
+                <p class="article-meta">Oleh Dr.Az | 22 Juni 2025</p>
+                <p class="excerpt">Rusher boleh mencuri perhatian, tapi tim yang solid membutuhkan support yang handal. Pelajari peran dan kombinasi skill terbaik untuk support...</p>
+                <a href="artikel-4.html" class="read-more-btn">Baca Selengkapnya</a>
+            </div>
+        </div>
+    </main>
+
     <footer class="footer">
-        </footer>
+         </footer>
 </body>
 </html>
